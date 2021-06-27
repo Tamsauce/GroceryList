@@ -1,0 +1,250 @@
+
+<ul>
+    <% for(let i = 0; i < groceryItem.length; i++) { %>
+        <li class='groceryList'>
+            <% if (groceryItem[i].completed === true) {%>
+            <span class="completed"><%= groceryItem[i].list %></span>
+            <% }else{ %>
+            <span><%= groceryItem[i].list %></span>
+            <% } %>
+            <span class="delete">Delete</span>     
+        </li>
+        <% } %>
+</ul>
+
+
+
+
+
+<div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container-fluid d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Fruits & Vegetables</h4>
+                            <div class="add-items d-flex">
+                                <form action="/createList" method="POST"> 
+                                    <input type="text" class="form-control todo-list-input" placeholder="Produce Item:" name="groceryList">
+                                    <input type="number" class="form-control todo-list-input" placeholder="Quanity">
+                                    <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button> 
+                                </form>
+                             </div>
+                            <div class="list-wrapper">
+                                <ul class="d-flex flex-column-reverse todo-list">
+                                    <% for(let i = 0; i < groceryItem.length; i++) { %>
+                                        <li class='groceryList'>
+                                            <div class="form-check"><label class="form-check-label"><input class="checkbox" type="checkbox">
+                                            <% if (groceryItem[i].completed === true) {%>
+                                            <span class="completed"><%= groceryItem[i].list %></span>
+                                            <% }else{ %>
+                                            <span><%= groceryItem[i].list %></span>
+                                            <% } %>
+                                            <i class="input-helper"></i></label> </div><i class="delete mdi dmi-close-circle-outline"></i>    
+                                        </li>
+                                        <% } %>
+                                </ul>
+                                <h5>Items left to buy: <%= remaining %></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container-fluid d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Meat, Poultry & Fish</h4>
+                            <div class="add-items d-flex"> 
+                                <form action="/createList" method="POST"> 
+                                    <input type="text" class="form-control todo-list-input" placeholder="Produce Item:" name="groceryList">
+                                    <input type="number" class="form-control todo-list-input" placeholder="Quanity">
+                                    <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button> 
+                            </form>
+                            <div class="list-wrapper">
+                                <ul class="d-flex flex-column-reverse todo-list">
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> For what reason would it be advisable. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> For what reason would it be advisable for me to think. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> it be advisable for me to think about business content? <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print Statements all <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> Call Rampbo <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print bills <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- 
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container-fluid d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Dairy & Frozen</h4>
+                            <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="Produce Item:"><input type="number" class="form-control todo-list-input" placeholder="Quanity"> <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button> </div>
+                            <div class="list-wrapper">
+                                <ul class="d-flex flex-column-reverse todo-list">
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> For what reason would it be advisable. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> For what reason would it be advisable for me to think. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> it be advisable for me to think about business content? <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print Statements all <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> Call Rampbo <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print bills <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container-fluid d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Bakery, Deli & Prepared Foods</h4>
+                            <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="Produce Item:"><input type="number" class="form-control todo-list-input" placeholder="Quanity"> <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button> </div>
+                            <div class="list-wrapper">
+                                <ul class="d-flex flex-column-reverse todo-list">
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> For what reason would it be advisable. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> For what reason would it be advisable for me to think. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> it be advisable for me to think about business content? <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print Statements all <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> Call Rampbo <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print bills <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container-fluid d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Beer, Wine & Snacks</h4>
+                            <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="Produce Item:"><input type="number" class="form-control todo-list-input" placeholder="Quanity"> <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button> </div>
+                            <div class="list-wrapper">
+                                <ul class="d-flex flex-column-reverse todo-list">
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> For what reason would it be advisable. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> For what reason would it be advisable for me to think. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> it be advisable for me to think about business content? <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print Statements all <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> Call Rampbo <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print bills <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container-fluid d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Health & Beauty</h4>
+                            <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="Produce Item:"><input type="number" class="form-control todo-list-input" placeholder="Quanity"> <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button> </div>
+                            <div class="list-wrapper">
+                                <ul class="d-flex flex-column-reverse todo-list">
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> For what reason would it be advisable. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> For what reason would it be advisable for me to think. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> it be advisable for me to think about business content? <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print Statements all <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li class="completed">
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> Call Rampbo <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                    <li>
+                                        <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print bills <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  -->
