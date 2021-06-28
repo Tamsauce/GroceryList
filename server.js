@@ -34,12 +34,13 @@ app.get('/', async (req, res) =>{
 
 app.post('/createList', (req, res) => {
     console.log(req.body.groceryList)
-    db.collection('WholeFoods').insertOne({list: req.body.groceryList, completed:false})
+    db.collection('WholeFoods').insertOne({list: req.body.groceryList, quantity: req.body.quantity, completed:false})
         .then(result => {
             console.log('Your list item has been added')
             res.redirect('/')
         })
 })
+
 
 app.put('/markComplete',(req, res) => {
     db.collection('WholeFoods').updateOne({list: req.body.basketItem}, {
