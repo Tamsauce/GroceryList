@@ -24,17 +24,25 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
 
+// get all 
 app.get('/', async (req, res) =>{
-    const groceryItems = await db.collection('WholeFoods').find().toArray()
-    const itemsRemaining = await db.collection('WholeFoods').countDocuments(
-        {completed: false}
-    )
-    res.render('index.ejs',{groceryItem: groceryItems, remaining: itemsRemaining})
+    const groceryVeggieItems = await db.collection('veggies').find().toArray()
+    const veggiesRemaining = await db.collection('veggies').countDocuments(
+        {completed: false})
+
+    const groceryMeatItems = await db.collection('meats').find().toArray()
+    const meatsRemaining = await db.collection('meats').countDocuments(
+        {completed: false})
+    
+    res.render('index.ejs',{groceryVeggieItem: groceryVeggieItems, veggiesRemain: veggiesRemaining, groceryMeatItem: groceryMeatItems, meatsRemain: meatsRemaining})
 })
 
-app.post('/createList', (req, res) => {
-    console.log(req.body.groceryList)
-    db.collection('WholeFoods').insertOne({list: req.body.groceryList, quantity: req.body.quantity, completed:false})
+
+
+//post veggies 
+app.post('/createVeggies', (req, res) => {
+    console.log(req.body.groceryVeggieList)
+    db.collection('veggies').insertOne({list: req.body.groceryVeggieList, quantity: req.body.quantity, completed:false})
         .then(result => {
             console.log('Your list item has been added')
             res.redirect('/')
@@ -42,8 +50,20 @@ app.post('/createList', (req, res) => {
 })
 
 
-app.put('/markComplete',(req, res) => {
-    db.collection('WholeFoods').updateOne({list: req.body.basketItem}, {
+//post meat 
+app.post('/createMeat', (req, res) => {
+    console.log(req.body.groceryMeatList)
+    db.collection('meats').insertOne({list: req.body.groceryMeatList, quantity: req.body.quantity, completed:false})
+        .then(result => {
+            console.log('Your list item has been added')
+            res.redirect('/')
+        })
+})
+
+
+//put veggies 
+app.put('/markCompleteVeggies',(req, res) => {
+    db.collection('veggies').updateOne({list: req.body.basketItem}, {
         $set: {
             completed: true
         }
@@ -54,8 +74,8 @@ app.put('/markComplete',(req, res) => {
     })
 })
 
-app.put('/undoComplete', (req, res) => {
-    db.collection('WholeFoods').updateOne({list: req.body.basketItem}, {
+app.put('/undoCompleteVeggies', (req, res) => {
+    db.collection('veggies').updateOne({list: req.body.basketItem}, {
         $set: {
             completed: false
         }
@@ -66,9 +86,37 @@ app.put('/undoComplete', (req, res) => {
     })
 })
 
-app.delete('/deleteItem', (req, res) => {
+
+//put meats
+app.put('/markCompleteMeats',(req, res) => {
+    db.collection('meats').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: true
+        }
+    })
+    .then(result => {
+        console.log('Marked Complete')
+        res.json('Mark Complete')
+    })
+})
+
+app.put('/undoCompleteMeats', (req, res) => {
+    db.collection('meats').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: false
+        }
+    })
+    .then(result => {
+        console.log('Undo Completed')
+        res.json('Undo Complete')
+    })
+})
+
+
+//delete veggies 
+app.delete('/deleteVeggies', (req, res) => {
     console.log(req.body.basketItem)
-    db.collection('WholeFoods').deleteOne({list: req.body.basketItem})
+    db.collection('veggies').deleteOne({list: req.body.basketItem})
         .then(result => {
             console.log('Deleted list item')
             res.json('Deleted it')
@@ -76,6 +124,20 @@ app.delete('/deleteItem', (req, res) => {
         .catch(err => console.log(err))
 })
 
+
+//delete meats 
+app.delete('/deleteMeats', (req, res) => {
+    console.log(req.body.basketItem)
+    db.collection('meats').deleteOne({list: req.body.basketItem})
+        .then(result => {
+            console.log('Deleted list item')
+            res.json('Deleted it')
+        })
+        .catch(err => console.log(err))
+})
+
+
+//listen to me
 app.listen(process.env.PORT || PORT, () => {
     console.log('I am hungry and need food!  Go buy some')
 })
