@@ -28,9 +28,9 @@
                             <h4 class="card-title">Fruits & Vegetables</h4>
                             <div class="list-wrapper">
                                 
-                                <form action="/createList" method="POST"> 
+                                <form action="/createVeggies" method="POST"> 
                                     <div class="add-items d-flex">
-                                        <input type="text" class="form-control todo-list-input" placeholder="Produce Item:" name="groceryList">
+                                        <input type="text" class="form-control todo-list-input" placeholder="Produce Item:" name="groceryVeggieList">
                                         <input type="number" class="form-control todo-list-input" placeholder="Quantity" name="quantity">
                                         <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button> 
                                     </div>
@@ -41,23 +41,23 @@
                             </div>
                            
                                 <ul class="d-flex flex-column todo-list">
-                                    <% for(let i = 0; i < groceryItem.length; i++) { %>
-                                        <li class='groceryList'>
+                                    <% for(let i = 0; i < groceryVeggieItem.length; i++) { %>
+                                        <li class='groceryVeggieList'>
                                             <div class="form-check"><label class="form-check-label"><input   class="checkbox" type="checkbox">
                                                 <i class="input-helper"></i></label> 
                                            </div>
-                                        <% if (groceryItem[i].completed === true) {%>
-                                            <span class="completed "><%= groceryItem[i].list %></span>
-                                            <span class="quantityItems"><%= groceryItem[i].quantity %></span>
+                                        <% if (groceryVeggieItem[i].completed === true) {%>
+                                            <span class="completed "><%= groceryVeggieItem[i].list %></span>
+                                            <span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span>
                                             <% }else{ %>
-                                            <span><%= groceryItem[i].list %></span>
-                                            <span class="quantityItems"><%= groceryItem[i].quantity %></span>
+                                            <span><%= groceryVeggieItem[i].list %></span>
+                                            <span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span>
                                             <% } %>
-                                        <i class="delete remove mdi mdi-close-circle-outline"></i>    
+                                        <i class="deleteVeggies remove mdi mdi-close-circle-outline"></i>    
                                         </li>
                                      <% } %>
                                 </ul>
-                                <h6>Remaining Items in this section: <span class="number"><%= remaining %></span></h6>
+                                <h6>Remaining Items in this section: <span class="number"><%= veggiesRemain %></span></h6>
                             </div>
                         </div>
                     </div>
@@ -68,8 +68,69 @@
 
 
     
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container-fluid d-flex justify-content-center">
+                <div class="col-lg-3">  
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Meats</h4>
+                            <div class="list-wrapper">
+                                
+                                <form action="/createMeat" method="POST"> 
+                                    <div class="add-items d-flex">
+                                        <input type="text" class="form-control todo-list-input" placeholder="Produce Item:" name="groceryMeatList">
+                                        <input type="number" class="form-control todo-list-input" placeholder="Quantity" name="quantity">
+                                        <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button> 
+                                    </div>
+                                </form>
+                             <div class="categories container-fluid d-flex justify-content-around "> 
+                                <h5>Items</h5>
+                                <h5>Quantity</h5>
+                            </div>
+                           
+                                <ul class="d-flex flex-column todo-list">
+                                    <% for(let i = 0; i < groceryMeatItem.length; i++) { %>
+                                        <li class='groceryMeatList'>
+                                            <div class="form-check"><label class="form-check-label"><input   class="checkbox" type="checkbox">
+                                                <i class="input-helper"></i></label> 
+                                           </div>
+                                        <% if (groceryMeatItem[i].completed === true) {%>
+                                            <span class="completed "><%= groceryMeatItem[i].list %></span>
+                                            <span class="quantityItems"><%= groceryMeatItem[i].quantity %></span>
+                                            <% }else{ %>
+                                            <span><%= groceryMeatItem[i].list %></span>
+                                            <span class="quantityItems"><%= groceryMeatItem[i].quantity %></span>
+                                            <% } %>
+                                        <i class="deleteMeats remove mdi mdi-close-circle-outline"></i>    
+                                        </li>
+                                     <% } %>
+                                </ul>
+                                <h6>Remaining Items in this section: <span class="number"><%= meatsRemain %></span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
 
     
+
+    
+
+    
+
+
+
    <script src="main.js"></script>
     
 </body>
