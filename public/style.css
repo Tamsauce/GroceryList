@@ -309,9 +309,9 @@ input[type="text"]:focus, input[type="number"]:focus{
         font-size: 2rem;
         top: 30px;
     }
-    .card{
+    /* .card{
         margin-left: 1rem;
-    }
+    } */
 }
 
 @media (max-width:280px) {
@@ -319,9 +319,9 @@ input[type="text"]:focus, input[type="number"]:focus{
         font-size: 1.5rem;
         top: 20px;
     }
-    .card{
+    /* .card{
         margin-left: 2rem;
-    }
+    } */
 }
 
 
