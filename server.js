@@ -33,8 +33,24 @@ app.get('/', async (req, res) =>{
     const groceryMeatItems = await db.collection('meats').find().toArray()
     const meatsRemaining = await db.collection('meats').countDocuments(
         {completed: false})
+
+    const groceryGrainItems = await db.collection('grains').find().toArray()
+    const grainsRemaining = await db.collection('grains').countDocuments(
+        {completed: false})
+
+    const groceryFrozenItems = await db.collection('frozen').find().toArray()
+    const frozenRemaining = await db.collection('frozen').countDocuments(
+        {completed: false})
+
+    const grocerySnackItems = await db.collection('snacks').find().toArray()
+    const snacksRemaining = await db.collection('snacks').countDocuments(
+        {completed: false})
+
+    const groceryPersonalItems = await db.collection('personal').find().toArray()
+    const personalRemaining = await db.collection('personal').countDocuments(
+        {completed: false})
     
-    res.render('index.ejs',{groceryVeggieItem: groceryVeggieItems, veggiesRemain: veggiesRemaining, groceryMeatItem: groceryMeatItems, meatsRemain: meatsRemaining})
+    res.render('index.ejs',{groceryVeggieItem: groceryVeggieItems, veggiesRemain: veggiesRemaining, groceryMeatItem: groceryMeatItems, meatsRemain: meatsRemaining, groceryGrainItem: groceryGrainItems, grainsRemain: grainsRemaining, groceryFrozenItem: groceryFrozenItems, frozenRemain: frozenRemaining, grocerySnackItem: grocerySnackItems, snacksRemain: snacksRemaining, groceryPersonalItem: groceryPersonalItems, personalRemain: personalRemaining})
 })
 
 
@@ -59,6 +75,51 @@ app.post('/createMeat', (req, res) => {
             res.redirect('/')
         })
 })
+
+//post grains
+app.post('/createGrains', (req, res) => {
+    console.log(req.body.groceryGrainList)
+    db.collection('grains').insertOne({list: req.body.groceryGrainList, quantity: req.body.quantity, completed:false})
+        .then(result => {
+            console.log('Your list item has been added')
+            res.redirect('/')
+        })
+})
+
+
+//post frozen
+app.post('/createFrozen', (req, res) => {
+    console.log(req.body.groceryFrozenList)
+    db.collection('frozen').insertOne({list: req.body.groceryFrozenList, quantity: req.body.quantity, completed:false})
+        .then(result => {
+            console.log('Your list item has been added')
+            res.redirect('/')
+        })
+})
+
+// post snacks 
+app.post('/createSnacks', (req, res) => {
+    console.log(req.body.grocerySnackList)
+    db.collection('snacks').insertOne({list: req.body.grocerySnackList, quantity: req.body.quantity, completed:false})
+        .then(result => {
+            console.log('Your list item has been added')
+            res.redirect('/')
+        })
+})
+
+
+//post personal 
+app.post('/createPersonal', (req, res) => {
+    console.log(req.body.groceryPersonalList)
+    db.collection('personal').insertOne({list: req.body.groceryPersonalList, quantity: req.body.quantity, completed:false})
+        .then(result => {
+            console.log('Your list item has been added')
+            res.redirect('/')
+        })
+})
+
+
+
 
 
 //put veggies 
@@ -88,7 +149,7 @@ app.put('/undoCompleteVeggies', (req, res) => {
 
 
 //put meats
-app.put('/markCompleteMeats',(req, res) => {
+app.put('/markCompleteMeat',(req, res) => {
     db.collection('meats').updateOne({list: req.body.basketItem}, {
         $set: {
             completed: true
@@ -100,7 +161,7 @@ app.put('/markCompleteMeats',(req, res) => {
     })
 })
 
-app.put('/undoCompleteMeats', (req, res) => {
+app.put('/undoCompleteMeat', (req, res) => {
     db.collection('meats').updateOne({list: req.body.basketItem}, {
         $set: {
             completed: false
@@ -111,6 +172,113 @@ app.put('/undoCompleteMeats', (req, res) => {
         res.json('Undo Complete')
     })
 })
+
+
+
+//put grains
+app.put('/markCompleteGrain',(req, res) => {
+    db.collection('grains').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: true
+        }
+    })
+    .then(result => {
+        console.log('Marked Complete')
+        res.json('Mark Complete')
+    })
+})
+
+app.put('/undoCompleteGrain', (req, res) => {
+    db.collection('grains').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: false
+        }
+    })
+    .then(result => {
+        console.log('Undo Completed')
+        res.json('Undo Complete')
+    })
+})
+
+
+//put frozen
+app.put('/markCompletefrozen',(req, res) => {
+    db.collection('frozen').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: true
+        }
+    })
+    .then(result => {
+        console.log('Marked Complete')
+        res.json('Mark Complete')
+    })
+})
+
+app.put('/undoCompletefrozen', (req, res) => {
+    db.collection('frozen').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: false
+        }
+    })
+    .then(result => {
+        console.log('Undo Completed')
+        res.json('Undo Complete')
+    })
+})
+
+
+//put snacks
+app.put('/markCompleteSnack',(req, res) => {
+    db.collection('snacks').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: true
+        }
+    })
+    .then(result => {
+        console.log('Marked Complete')
+        res.json('Mark Complete')
+    })
+})
+
+app.put('/undoCompleteSnack', (req, res) => {
+    db.collection('snacks').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: false
+        }
+    })
+    .then(result => {
+        console.log('Undo Completed')
+        res.json('Undo Complete')
+    })
+})
+
+
+//put personal
+app.put('/markCompletePersonal',(req, res) => {
+    db.collection('personal').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: true
+        }
+    })
+    .then(result => {
+        console.log('Marked Complete')
+        res.json('Mark Complete')
+    })
+})
+
+app.put('/undoCompletePersonal', (req, res) => {
+    db.collection('personal').updateOne({list: req.body.basketItem}, {
+        $set: {
+            completed: false
+        }
+    })
+    .then(result => {
+        console.log('Undo Completed')
+        res.json('Undo Complete')
+    })
+})
+
+
 
 
 //delete veggies 
@@ -136,6 +304,53 @@ app.delete('/deleteMeats', (req, res) => {
         .catch(err => console.log(err))
 })
 
+
+//delete grains
+app.delete('/deleteGrains', (req, res) => {
+    console.log(req.body.basketItem)
+    db.collection('grains').deleteOne({list: req.body.basketItem})
+        .then(result => {
+            console.log('Deleted list item')
+            res.json('Deleted it')
+        })
+        .catch(err => console.log(err))
+})
+
+
+//delete frozen
+app.delete('/deleteFrozen', (req, res) => {
+    console.log(req.body.basketItem)
+    db.collection('frozen').deleteOne({list: req.body.basketItem})
+        .then(result => {
+            console.log('Deleted list item')
+            res.json('Deleted it')
+        })
+        .catch(err => console.log(err))
+})
+
+
+//delete snacks
+app.delete('/deleteSnacks', (req, res) => {
+    console.log(req.body.basketItem)
+    db.collection('snacks').deleteOne({list: req.body.basketItem})
+        .then(result => {
+            console.log('Deleted list item')
+            res.json('Deleted it')
+        })
+        .catch(err => console.log(err))
+})
+
+
+//delete personal
+app.delete('/deletePersonal', (req, res) => {
+    console.log(req.body.basketItem)
+    db.collection('personal').deleteOne({list: req.body.basketItem})
+        .then(result => {
+            console.log('Deleted list item')
+            res.json('Deleted it')
+        })
+        .catch(err => console.log(err))
+})
 
 //listen to me
 app.listen(process.env.PORT || PORT, () => {
