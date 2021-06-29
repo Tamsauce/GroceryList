@@ -6,7 +6,7 @@ const deleteSnacksItem = document.querySelectorAll('.deleteSnacks')
 const deletePersonalItem = document.querySelectorAll('.deletePersonal')
 
 
-const veggieComplete = document.querySelectorAll('.groceryVeggieList span')
+const veggieComplete = document.querySelectorAll('.groceryVeggieList span .input-incompleted')
 const meatComplete = document.querySelectorAll('.groceryMeatList span')
 const grainComplete = document.querySelectorAll('.groceryGrainList span')
 const frozenComplete = document.querySelectorAll('.groceryFrozenList span')
@@ -14,7 +14,7 @@ const snackComplete = document.querySelectorAll('.grocerySnackList span')
 const personalComplete = document.querySelectorAll('.groceryPersonalList span')
 
 
-const undoVeggieComplete = document.querySelectorAll('.groceryVeggieList span.completed')
+const undoVeggieComplete = document.querySelectorAll('.groceryVeggieList span.completed .input-completed')
 const undoMeatComplete = document.querySelectorAll('.groceryMeatList span.completed')
 const undoGrainComplete = document.querySelectorAll('.groceryGrainList span.completed')
 const undoFrozenComplete = document.querySelectorAll('.groceryFrozenList span.completed')
@@ -240,7 +240,7 @@ async function deletePersonal(){
 
 //functions for all the mark completes 
 async function markVeggiesComplete(){
-const listText = this.parentNode.childNodes[3].innerText
+const listText = this.parentNode.childNodes[7].innerText
     try{
     const response = await fetch('markCompleteVeggies', {
         method: 'put',

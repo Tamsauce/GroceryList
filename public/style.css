@@ -16,7 +16,8 @@ body {
 
 h6{
     text-align: center;
-    margin-top: .8rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
     
 }
 
@@ -62,6 +63,7 @@ h2{
     justify-content: center;
     margin: 0 auto;
     padding: 0;
+   
 }
 
 /* .title{
@@ -74,6 +76,7 @@ h2{
 
 h4{
     text-align: center;
+    padding-bottom: 1rem;
 }
 
 .card{
@@ -85,10 +88,6 @@ h4{
      margin-bottom: 2rem;
     
 }
-
-
-
-
 
 
 .list-wrapper ul li {
@@ -129,11 +128,11 @@ h4{
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
 }
 
-.quantityItems{
+/* .quantityItems{
     position: relative;
     text-align: center;
     left: 150px;
-}
+} */
 
 
 /* .list-wrapper ul li:last-child {
@@ -158,9 +157,9 @@ h4{
      */
 /* } */
 
-/* h5{
-    padding-right: 250px;
-} */
+h5{
+    text-decoration: underline .175rem solid rgba(0,112,68, 1);
+}
 
 
 input[type="text"]:focus, input[type="number"]:focus{
@@ -249,7 +248,9 @@ input[type="text"]:focus, input[type="number"]:focus{
     border-radius: 0.1275rem
 }
 
-
+.items{
+    padding-left: 0 !important;
+}
 
 
 
@@ -445,7 +446,7 @@ padding: 0 1rem; */
 .form-check .form-check-label {
     min-height: 1.125rem;
     display: block;
-    margin-left: 1.75rem;
+    margin-left: .25rem;
     font-size: 0.875rem;
     line-height: 1.5
 }
@@ -543,10 +544,12 @@ input[type="checkbox"] {
     left: 0
 }
 
+
+
 .form-check .form-check-label input[type="checkbox"]:checked+.input-helper:before {
     background: rgb(0,112,68, 1);
     border-width: 0
-}
+} 
 
 
 
@@ -568,20 +571,24 @@ input[type="checkbox"] {
     transition-duration: 250ms
 }
 
-/* .form-check .form-check-label input[type="checkbox"]+.input-helper:after {
+
+/* also doesn't seem to be doing anything */
+.form-check .form-check-label input[type="checkbox"]+.input-helper:after {
     font-family: FontAwesome;
     content: "\f095";
     display: inline-block;
     padding-right: 3px;
     vertical-align: middle;
     color: #fff
-} */
+}
 
 /* .text-primary,
 .list-wrapper .completed .remove {
     color: hsl(226, 36%, 39%) !important
 } */
 
+
+/* doesn't seem to be doing anything */
 .list-wrapper .remove {
     cursor: pointer;
     font-size: 1.438rem;
@@ -593,6 +600,8 @@ input[type="checkbox"] {
     
 }
 
+
+/* will not need after the rest of the cards are made correctly*/
 .ml-auto,
 .list-wrapper .remove,
 .mx-auto {
@@ -603,11 +612,11 @@ input[type="checkbox"] {
     content: "\F15A"
 } */
 
-/* .list-wrapper ul li {
+.list-wrapper ul li {
     font-size: .9375rem;
     padding: .4rem 0;
     border-bottom: 1px solid #f3f3f3
-} */
+}
 
 .mdi:before {
     font-family: FontAwesome;
@@ -626,9 +635,7 @@ input[type="checkbox"] {
     margin-bottom: 0
 } */
 
-/* .flex-column-reverse {
-    flex-direction: column-reverse !important
-} */
+
 
 
 .list-wrapper ul li{

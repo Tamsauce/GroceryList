@@ -60,6 +60,7 @@ app.post('/createVeggies', (req, res) => {
     console.log(req.body.groceryVeggieList)
     db.collection('veggies').insertOne({list: req.body.groceryVeggieList, quantity: req.body.quantity, completed:false})
         .then(result => {
+            
             console.log('Your list item has been added')
             res.redirect('/')
         })
