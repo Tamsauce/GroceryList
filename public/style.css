@@ -260,6 +260,7 @@ input[type="text"]:focus, input[type="number"]:focus{
         font-size: 4.8rem;
         top: 80px;
     }
+   
   
 }
 
@@ -322,6 +323,14 @@ input[type="text"]:focus, input[type="number"]:focus{
     }
 }
 
+
+
+
+@media (min-width: 768px) and (max-width: 991px) { 
+    .col-md-4{
+        width: 50%;
+    }
+ }
 
 
 
