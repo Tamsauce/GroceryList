@@ -227,7 +227,7 @@ input[type="text"]:focus, input[type="number"]:focus{
 
 
 
-
+*/
 
 /* .list-wrapper .remove {
     cursor: pointer;
@@ -237,8 +237,7 @@ input[type="text"]:focus, input[type="number"]:focus{
     height: 1.25rem;
     line-height: 20px;
     text-align: center
-} 
-*/
+}  */
 
 .btn {
     font-size: 0.8rem;
@@ -608,9 +607,9 @@ input[type="checkbox"] {
     margin-left: auto !important
 }
 
-/* .mdi-close-circle-outline:before {
+.mdi-close-circle-outline:before {
     content: "\F15A"
-} */
+}
 
 .list-wrapper ul li {
     font-size: .9375rem;
