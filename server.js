@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const PORT = 1031
 const MongoClient = require('mongodb').MongoClient
+const { ObjectId } = require('mongodb')
 require('dotenv').config()
 
 let db, 
@@ -286,7 +287,7 @@ app.put('/undoCompletePersonal', (req, res) => {
 //delete veggies 
 app.delete('/deleteVeggies', (req, res) => {
     console.log(req.body.basketItem)
-    db.collection('veggies').deleteOne({list: req.body.basketItem})
+    db.collection('veggies').findOneAndDelete({_id: ObjectId(req.body.basketItem)})
         .then(result => {
             console.log('Deleted list item')
             res.json('Deleted it')

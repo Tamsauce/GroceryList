@@ -113,14 +113,14 @@ Array.from(undoPersonalComplete).forEach((element) => {
 
 // Functions for all the deletes 
 async function deleteVeggies(){
-    const listText = this.parentNode.querySelector('.secondDiv').innerText
-    console.log(listText)
+    const veggieId = this.dataset.id
+    console.log(veggieId)
     try{
         const response = await fetch('deleteVeggies', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'basketItem':listText
+                'basketItem':veggieId
             })
         })
         const data = await response.json()

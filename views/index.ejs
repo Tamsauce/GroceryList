@@ -74,7 +74,7 @@
                                                 <div class="container secondDiv d-flex justify-content-start"><span><%= groceryVeggieItem[i].list %></span></div>
                                                 <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span><span class="quantityItems"><%= groceryVeggieItem[i].size %></span></div>
                                                 <% } %>
-                                            <i class="deleteVeggies remove mdi mdi-close-circle-outline"></i>
+                                            <i class="deleteVeggies remove mdi mdi-close-circle-outline" data-id="<%= groceryVeggieItem[i]._id %>" ></i>
                                             </li>
                                          <% } %>
                                     </ul>
