@@ -62,16 +62,16 @@
                                             <% if (groceryVeggieItem[i].completed === true) {%>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox">
-                                                    <i class="input-helper input-completed"></i></label></div>
-                                                <div class="container secondDiv d-flex justify-content-start"><span class="completed "><%= groceryVeggieItem[i].list %></span></div>
+                                                    <input class="checkbox" type="checkbox" checked>
+                                                    <i class="input-helper input-completed" data-id="<%= groceryVeggieItem[i]._id %>"></i></label></div>
+                                                <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryVeggieItem[i].list %></span></div>
                                                 <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span><span class="quantityItems"><%= groceryVeggieItem[i].size %></span></div>
                                                 <% }else{ %>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
                                                     <input class="checkbox" type="checkbox">
-                                                    <i class="input-helper"></i></label></div>
-                                                <div class="container secondDiv d-flex justify-content-start"><span><%= groceryVeggieItem[i].list %></span></div>
+                                                    <i class="input-helper input-incompleted" data-id="<%= groceryVeggieItem[i]._id %>"></i></label></div>
+                                                <div class="container  d-flex justify-content-start"><span><%= groceryVeggieItem[i].list %></span></div>
                                                 <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span><span class="quantityItems"><%= groceryVeggieItem[i].size %></span></div>
                                                 <% } %>
                                             <i class="deleteVeggies remove mdi mdi-close-circle-outline" data-id="<%= groceryVeggieItem[i]._id %>" ></i>

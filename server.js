@@ -127,7 +127,7 @@ app.post('/createPersonal', (req, res) => {
 
 //put veggies 
 app.put('/markCompleteVeggies',(req, res) => {
-    db.collection('veggies').updateOne({list: req.body.basketItem}, {
+    db.collection('veggies').update({_id: ObjectId(req.body.basketItem)}, {
         $set: {
             completed: true
         }
@@ -135,11 +135,12 @@ app.put('/markCompleteVeggies',(req, res) => {
     .then(result => {
         console.log('Marked Complete')
         res.json('Mark Complete')
+       
     })
 })
 
 app.put('/undoCompleteVeggies', (req, res) => {
-    db.collection('veggies').updateOne({list: req.body.basketItem}, {
+    db.collection('veggies').update({_id: ObjectId(req.body.basketItem)}, {
         $set: {
             completed: false
         }
@@ -286,7 +287,6 @@ app.put('/undoCompletePersonal', (req, res) => {
 
 //delete veggies 
 app.delete('/deleteVeggies', (req, res) => {
-    console.log(req.body.basketItem)
     db.collection('veggies').findOneAndDelete({_id: ObjectId(req.body.basketItem)})
         .then(result => {
             console.log('Deleted list item')
@@ -298,7 +298,6 @@ app.delete('/deleteVeggies', (req, res) => {
 
 //delete meats 
 app.delete('/deleteMeats', (req, res) => {
-    console.log(req.body.basketItem)
     db.collection('meats').deleteOne({list: req.body.basketItem})
         .then(result => {
             console.log('Deleted list item')
@@ -310,7 +309,6 @@ app.delete('/deleteMeats', (req, res) => {
 
 //delete grains
 app.delete('/deleteGrains', (req, res) => {
-    console.log(req.body.basketItem)
     db.collection('grains').deleteOne({list: req.body.basketItem})
         .then(result => {
             console.log('Deleted list item')
@@ -322,7 +320,6 @@ app.delete('/deleteGrains', (req, res) => {
 
 //delete frozen
 app.delete('/deleteFrozen', (req, res) => {
-    console.log(req.body.basketItem)
     db.collection('frozen').deleteOne({list: req.body.basketItem})
         .then(result => {
             console.log('Deleted list item')
@@ -334,7 +331,6 @@ app.delete('/deleteFrozen', (req, res) => {
 
 //delete snacks
 app.delete('/deleteSnacks', (req, res) => {
-    console.log(req.body.basketItem)
     db.collection('snacks').deleteOne({list: req.body.basketItem})
         .then(result => {
             console.log('Deleted list item')
@@ -346,7 +342,6 @@ app.delete('/deleteSnacks', (req, res) => {
 
 //delete personal
 app.delete('/deletePersonal', (req, res) => {
-    console.log(req.body.basketItem)
     db.collection('personal').deleteOne({list: req.body.basketItem})
         .then(result => {
             console.log('Deleted list item')

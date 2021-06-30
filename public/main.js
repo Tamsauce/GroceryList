@@ -6,7 +6,7 @@ const deleteSnacksItem = document.querySelectorAll('.deleteSnacks')
 const deletePersonalItem = document.querySelectorAll('.deletePersonal')
 
 
-const veggieComplete = document.querySelectorAll('.groceryVeggieList span .input-incompleted')
+const veggieComplete = document.querySelectorAll('.groceryVeggieList .input-incompleted')
 const meatComplete = document.querySelectorAll('.groceryMeatList span')
 const grainComplete = document.querySelectorAll('.groceryGrainList span')
 const frozenComplete = document.querySelectorAll('.groceryFrozenList span')
@@ -14,14 +14,14 @@ const snackComplete = document.querySelectorAll('.grocerySnackList span')
 const personalComplete = document.querySelectorAll('.groceryPersonalList span')
 
 
-const undoVeggieComplete = document.querySelectorAll('.groceryVeggieList span.completed .input-completed')
+const undoVeggieComplete = document.querySelectorAll('.groceryVeggieList .input-completed')
 const undoMeatComplete = document.querySelectorAll('.groceryMeatList span.completed')
 const undoGrainComplete = document.querySelectorAll('.groceryGrainList span.completed')
 const undoFrozenComplete = document.querySelectorAll('.groceryFrozenList span.completed')
 const undoSnackComplete = document.querySelectorAll('.grocerySnackList span.completed')
 const undoPersonalComplete = document.querySelectorAll('.groceryPersonalList span.completed')
 
-
+console.log(undoVeggieComplete, veggieComplete)
 
 
 Array.from(deleteVeggiesItem).forEach((element) => {
@@ -241,8 +241,8 @@ async function deletePersonal(){
 
 //functions for all the mark completes 
 async function markVeggiesComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-console.log(this.parentNode.childNodes)
+const listText = this.dataset.id
+console.log(listText,"mark complete veggies")
     try{
     const response = await fetch('markCompleteVeggies', {
         method: 'put',
@@ -371,7 +371,9 @@ const listText = this.parentNode.childNodes[3].innerText
     
 //functins for all the mark incompelete 
 async function markUndoVeggiesComplete(){
-const listText = this.parentNode.childNodes[3].innerText
+const listText = this.dataset.id
+console.log(listText,"mark undo veggies")
+
     try{
     const response = await fetch('undoCompleteVeggies', {
         method: 'put',
