@@ -113,7 +113,8 @@ Array.from(undoPersonalComplete).forEach((element) => {
 
 // Functions for all the deletes 
 async function deleteVeggies(){
-    const listText = this.parentNode.childNodes[3].innerText
+    const listText = this.parentNode.querySelector('.secondDiv').innerText
+    console.log(listText)
     try{
         const response = await fetch('deleteVeggies', {
             method: 'delete',
@@ -240,7 +241,8 @@ async function deletePersonal(){
 
 //functions for all the mark completes 
 async function markVeggiesComplete(){
-const listText = this.parentNode.childNodes[7].innerText
+const listText = this.parentNode.childNodes[3].innerText
+console.log(this.parentNode.childNodes)
     try{
     const response = await fetch('markCompleteVeggies', {
         method: 'put',

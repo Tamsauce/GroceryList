@@ -29,6 +29,7 @@ app.get('/', async (req, res) =>{
     const groceryVeggieItems = await db.collection('veggies').find().toArray()
     const veggiesRemaining = await db.collection('veggies').countDocuments(
         {completed: false})
+        console.log(groceryVeggieItems)
 
     const groceryMeatItems = await db.collection('meats').find().toArray()
     const meatsRemaining = await db.collection('meats').countDocuments(
@@ -58,9 +59,9 @@ app.get('/', async (req, res) =>{
 //post veggies 
 app.post('/createVeggies', (req, res) => {
     console.log(req.body.groceryVeggieList)
-    db.collection('veggies').insertOne({list: req.body.groceryVeggieList, quantity: req.body.quantity, completed:false})
+    db.collection('veggies').insertOne({list: req.body.groceryVeggieList, quantity: req.body.quantity, size: req.body.size, completed:false})
         .then(result => {
-            
+
             console.log('Your list item has been added')
             res.redirect('/')
         })

@@ -31,18 +31,28 @@
         
                                     <form action="/createVeggies" method="POST">
                                         <div class="add-items d-flex">
-                                            <input type="text" class="form-control todo-list-input" placeholder="Produce:" name="groceryVeggieList" required>
-                                            <input type="number" class="form-control todo-list-input" placeholder="Quantity:" name="quantity" required>
+                                            <input type="text" class="form-control" placeholder="Produce:" name="groceryVeggieList" required>
+                                            <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
+                                            <select class="form-control" aria-label=".form-select-lg example" name="size">
+                                                <option selected>Size</option>
+                                                <option value="Bag">Bag</option>
+                                                <option value="Box">Box</option>
+                                                <option value="Can">Can</option>
+                                                <option value="Carton">Carton</option>
+                                                <option value="Jar">Jar</option>
+                                                <option value="Pack">Pack</option>
+
+                                              </select>
                                             <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
                                         </div>
                                     </form>
 
                                  <div class="items container-fluid d-flex justify-content-start">
                                      <div class="items container-fluid d-flex justify-content-start">
-                                        <h5>Items</h5>
+                                        <h5>Items:</h5>
                                     </div>
                                     <div class="container-fluid d-flex justify-content-center">
-                                        <h5>Quantity</h5>
+                                        <h5>Quantity:</h5>
                                     </div>
                                  </div>
         
@@ -54,15 +64,15 @@
                                                     <label class="form-check-label">
                                                     <input class="checkbox" type="checkbox">
                                                     <i class="input-helper input-completed"></i></label></div>
-                                                <div class="container d-flex justify-content-start"><span class="completed "><%= groceryVeggieItem[i].list %></span></div>
-                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span></div>
+                                                <div class="container secondDiv d-flex justify-content-start"><span class="completed "><%= groceryVeggieItem[i].list %></span></div>
+                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span><span class="quantityItems"><%= groceryVeggieItem[i].size %></span></div>
                                                 <% }else{ %>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
                                                     <input class="checkbox" type="checkbox">
                                                     <i class="input-helper"></i></label></div>
-                                                <div class="container d-flex justify-content-start"><span><%= groceryVeggieItem[i].list %></span></div>
-                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span></div>
+                                                <div class="container secondDiv d-flex justify-content-start"><span><%= groceryVeggieItem[i].list %></span></div>
+                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span><span class="quantityItems"><%= groceryVeggieItem[i].size %></span></div>
                                                 <% } %>
                                             <i class="deleteVeggies remove mdi mdi-close-circle-outline"></i>
                                             </li>
