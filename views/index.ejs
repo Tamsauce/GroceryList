@@ -33,8 +33,8 @@
                                         <div class="add-items d-flex">
                                             <input type="text" class="form-control" placeholder="Produce:" name="groceryVeggieList" required>
                                             <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
-                                            <select class="form-control" aria-label=".form-select-lg example" name="size" required>
-                                                <option selected>Size</option>
+                                            <select class="form-control" aria-label=".form-select-sm example" name="size" required>
+                                                <option selected>Size:</option>
                                                 <option value="Bag">Bag</option>
                                                 <option value="Box">Box</option>
                                                 <option value="Can">Can</option>
@@ -66,7 +66,7 @@
                                                     <input class="checkbox" type="checkbox" checked>
                                                     <i class="input-helper input-completed" data-id="<%= groceryVeggieItem[i]._id %>"></i></label></div>
                                                 <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryVeggieItem[i].list %></span></div>
-                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryVeggieItem[i].quantity %></span><span class="quantityItems"><%= groceryVeggieItem[i].size %></span></div>
+                                                <div class="container d-flex justify-content-center"><span class="completed quantityItems"><%= groceryVeggieItem[i].quantity %></span><span class="completed quantityItems"><%= groceryVeggieItem[i].size %></span></div>
                                                 <% }else{ %>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
@@ -102,7 +102,7 @@
                                 <input type="text" class="form-control" placeholder="Meat:" name="groceryMeatList" required>
                                 <input type="number" class="form-control" placeholder="Weight:" name="quantity" required>
                                 <select class="form-control" aria-label=".form-select-lg example" name="size" required>
-                                    <option selected>Size</option>
+                                    <option selected>Size:</option>
                                     <option value="lbs">lbs</option>
                                     <option value="oz">oz</option>
                                     <option value="kg">kg</option>
@@ -129,7 +129,7 @@
                                         <input class="checkbox" type="checkbox" checked>
                                         <i class="input-helper input-completed" data-id="<%= groceryMeatItem[i]._id %>"></i></label></div>
                                     <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryMeatItem[i].list %></span></div>
-                                    <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryMeatItem[i].quantity %></span><span class="quantityItems"><%= groceryMeatItem[i].size %></span></div>
+                                    <div class="container d-flex justify-content-center"><span class="completed quantityItems"><%= groceryMeatItem[i].quantity %></span><span class="completed quantityItems"><%= groceryMeatItem[i].size %></span></div>
                                     <% }else{ %>
                                     <div class="form-check">
                                         <label class="form-check-label">
@@ -165,7 +165,7 @@
                                     <input type="text" class="form-control" placeholder="Grains:" name="groceryGrainList" required>
                                     <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
                                     <select class="form-control" aria-label=".form-select-lg example" name="size" required>
-                                        <option selected>Size</option>
+                                        <option selected>Size:</option>
                                         <option value="Bag">Bag</option>
                                         <option value="Box">Box</option>
                                         <option value="Can">Can</option>
@@ -196,7 +196,7 @@
                                             <input class="checkbox" type="checkbox" checked>
                                             <i class="input-helper input-completed" data-id="<%= groceryGrainItem[i]._id %>"></i></label></div>
                                         <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryGrainItem[i].list %></span></div>
-                                        <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryGrainItem[i].quantity %></span><span class="quantityItems"><%= groceryGrainItem[i].size %></span></div>
+                                        <div class="container d-flex justify-content-center"><span class="completed quantityItems"><%= groceryGrainItem[i].quantity %></span><span class="completed quantityItems"><%= groceryGrainItem[i].size %></span></div>
                                         <% }else{ %>
                                         <div class="form-check">
                                             <label class="form-check-label">
@@ -261,7 +261,7 @@
                                                 <input class="checkbox" type="checkbox" checked>
                                                 <i class="input-helper input-completed" data-id="<%= groceryFrozenItem[i]._id %>"></i></label></div>
                                             <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryFrozenItem[i].list %></span></div>
-                                            <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryFrozenItem[i].quantity %></span><span class="quantityItems"><%= groceryFrozenItem[i].size %></span></div>
+                                            <div class="container d-flex justify-content-center"><span class="completed quantityItems"><%= groceryFrozenItem[i].quantity %></span><span class="completed quantityItems"><%= groceryFrozenItem[i].size %></span></div>
                                             <% }else{ %>
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -299,7 +299,7 @@
                                         <input type="text" class="form-control" placeholder="Produce:" name="grocerySnackList" required>
                                         <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
                                         <select class="form-control" aria-label=".form-select-lg example" name="size" required>
-                                            <option selected>Size</option>
+                                            <option selected>Size:</option>
                                             <option value="Bag">Bag</option>
                                             <option value="Bottle">Bottle</option>
                                             <option value="Box">Box</option>
@@ -331,7 +331,7 @@
                                                 <input class="checkbox" type="checkbox" checked>
                                                 <i class="input-helper input-completed" data-id="<%= grocerySnackItem[i]._id %>"></i></label></div>
                                             <div class="container  d-flex justify-content-start"><span class="completed "><%= grocerySnackItem[i].list %></span></div>
-                                            <div class="container d-flex justify-content-center"><span class="quantityItems"><%= grocerySnackItem[i].quantity %></span><span class="quantityItems"><%= grocerySnackItem[i].size %></span></div>
+                                            <div class="container d-flex justify-content-center"><span class="completed quantityItems"><%= grocerySnackItem[i].quantity %></span><span class="completed quantityItems"><%= grocerySnackItem[i].size %></span></div>
                                             <% }else{ %>
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -365,7 +365,7 @@
                                             <input type="text" class="form-control" placeholder="Supplies:" name="groceryPersonalList" required>
                                             <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
                                             <select class="form-control" aria-label=".form-select-lg example" name="size" required>
-                                                <option selected>Size</option>
+                                                <option selected>Size:</option>
                                                 <option value="Bag">Bag</option>
                                                 <option value="Box">Box</option>
                                                 <option value="Bottle">Bottle</option>
@@ -397,7 +397,7 @@
                                                     <input class="checkbox" type="checkbox" checked>
                                                     <i class="input-helper input-completed" data-id="<%= groceryPersonalItem[i]._id %>"></i></label></div>
                                                 <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryPersonalItem[i].list %></span></div>
-                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryPersonalItem[i].quantity %></span><span class="quantityItems"><%= groceryPersonalItem[i].size %></span></div>
+                                                <div class="container d-flex justify-content-center"><span class="completed quantityItems"><%= groceryPersonalItem[i].quantity %></span><span class="completed quantityItems"><%= groceryPersonalItem[i].size %></span></div>
                                                 <% }else{ %>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
