@@ -7,19 +7,19 @@ const deletePersonalItem = document.querySelectorAll('.deletePersonal')
 
 
 const veggieComplete = document.querySelectorAll('.groceryVeggieList .input-incompleted')
-const meatComplete = document.querySelectorAll('.groceryMeatList span')
-const grainComplete = document.querySelectorAll('.groceryGrainList span')
-const frozenComplete = document.querySelectorAll('.groceryFrozenList span')
-const snackComplete = document.querySelectorAll('.grocerySnackList span')
-const personalComplete = document.querySelectorAll('.groceryPersonalList span')
+const meatComplete = document.querySelectorAll('.groceryMeatList .input-incompleted')
+const grainComplete = document.querySelectorAll('.groceryGrainList .input-incompleted')
+const frozenComplete = document.querySelectorAll('.groceryFrozenList .input-incompleted')
+const snackComplete = document.querySelectorAll('.grocerySnackList .input-incompleted')
+const personalComplete = document.querySelectorAll('.groceryPersonalList .input-incompleted')
 
 
 const undoVeggieComplete = document.querySelectorAll('.groceryVeggieList .input-completed')
-const undoMeatComplete = document.querySelectorAll('.groceryMeatList span.completed')
-const undoGrainComplete = document.querySelectorAll('.groceryGrainList span.completed')
-const undoFrozenComplete = document.querySelectorAll('.groceryFrozenList span.completed')
-const undoSnackComplete = document.querySelectorAll('.grocerySnackList span.completed')
-const undoPersonalComplete = document.querySelectorAll('.groceryPersonalList span.completed')
+const undoMeatComplete = document.querySelectorAll('.groceryMeatList .input-completed')
+const undoGrainComplete = document.querySelectorAll('.groceryGrainList .input-completed')
+const undoFrozenComplete = document.querySelectorAll('.groceryFrozenList .input-completed')
+const undoSnackComplete = document.querySelectorAll('.grocerySnackList .input-completed')
+const undoPersonalComplete = document.querySelectorAll('.groceryPersonalList .input-completed')
 
 
 
@@ -67,27 +67,39 @@ Array.from(deletePersonalItem).forEach((element) => {
 
 
 Array.from(veggieComplete).forEach((element) =>{
-    element.addEventListener('click', markVeggiesComplete)
+    element.addEventListener('click', () => {
+        markItemComplete(element.dataset.id, 'veggies')
+    })
 })
 
 Array.from(meatComplete).forEach((element) =>{
-    element.addEventListener('click', markMeatComplete)
+    element.addEventListener('click', () => {
+        markItemComplete(element.dataset.id, 'meats')
+    })
 })
 
 Array.from(grainComplete).forEach((element) =>{
-    element.addEventListener('click', markGrainComplete)
+    element.addEventListener('click', () => {
+        markItemComplete(element.dataset.id, 'grains')
+    })
 })
 
 Array.from(frozenComplete).forEach((element) =>{
-    element.addEventListener('click', markFrozenComplete)
+    element.addEventListener('click', () => {
+        markItemComplete(element.dataset.id, 'frozen')
+    })
 })
 
 Array.from(snackComplete).forEach((element) =>{
-    element.addEventListener('click', markSnackComplete)
+    element.addEventListener('click', () => {
+        markItemComplete(element.dataset.id, 'snacks')
+    })
 })
 
 Array.from(personalComplete).forEach((element) =>{
-    element.addEventListener('click', markPersonalComplete)
+    element.addEventListener('click', () => {
+        markItemComplete(element.dataset.id, 'personal')
+    })
 })
 
 
@@ -96,34 +108,46 @@ Array.from(personalComplete).forEach((element) =>{
 
 
 Array.from(undoVeggieComplete).forEach((element) => {
-    element.addEventListener('click', markUndoVeggiesComplete)
+    element.addEventListener('click', () => {
+        undoItemComplete(element.dataset.id, 'veggies')
+    })
 })
 
 Array.from(undoMeatComplete).forEach((element) => {
-    element.addEventListener('click', markUndoMeatComplete)
+    element.addEventListener('click', () => {
+        undoItemComplete(element.dataset.id, 'meats')
+    })
 })
 
 Array.from(undoGrainComplete).forEach((element) => {
-    element.addEventListener('click', markUndoGrainComplete)
+    element.addEventListener('click', () => {
+        undoItemComplete(element.dataset.id, 'grains')
+    })
 })
 
 Array.from(undoFrozenComplete).forEach((element) => {
-    element.addEventListener('click', markUndoFrozenComplete)
+    element.addEventListener('click', () => {
+        undoItemComplete(element.dataset.id, 'frozen')
+    })
 })
 
 Array.from(undoSnackComplete).forEach((element) => {
-    element.addEventListener('click', markUndoSnackComplete)
+    element.addEventListener('click', () => {
+        undoItemComplete(element.dataset.id, 'snacks')
+    })
 })
 
 Array.from(undoPersonalComplete).forEach((element) => {
-    element.addEventListener('click', markUndoPersonalComplete)
+    element.addEventListener('click', () => {
+        undoItemComplete(element.dataset.id, 'personal')
+    })
 })
 
 
 
 
 
-async function deleteItem(listText,subFolder){
+async function deleteItem(listText, subFolder){
     try{
         const response = await fetch('deleteItem', {
             method: 'delete',
@@ -134,7 +158,6 @@ async function deleteItem(listText,subFolder){
             })
         })
         const data = await response.json()
-        console.log(data)
         location.reload()   
     }catch(err){
         console.log(err)
@@ -144,21 +167,17 @@ async function deleteItem(listText,subFolder){
 
 
 
-
-//functions for all the mark completes 
-async function markVeggiesComplete(){
-const listText = this.dataset.id
-console.log(listText,"mark complete veggies")
+async function markItemComplete(listText, subFolder){
     try{
-    const response = await fetch('markCompleteVeggies', {
+    const response = await fetch('markCompleteItem', {
         method: 'put',
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify({
-            'basketItem': listText
+            'basketItem': listText,
+            'subFolder': subFolder
         })
     })
     const data = await response.json()
-    console.log(data)
     location.reload()
 
     }catch(err){
@@ -168,223 +187,17 @@ console.log(listText,"mark complete veggies")
 }
 
 
-async function markMeatComplete(){
-const listText = this.parentNode.childNodes[3].innerText
+async function undoItemComplete(listText, subFolder){
     try{
-    const response = await fetch('markCompleteMeat', {
+    const response = await fetch('undoCompleteItem', {
         method: 'put',
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify({
-            'basketItem': listText
+            'basketItem': listText,
+            'subFolder': subFolder
         })
     })
     const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-    
-    }
-}
-    
-
-
-async function markGrainComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-    try{
-    const response = await fetch('markCompleteGrain', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-
-    }
-}
-    
-    
-async function markFrozenComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-    try{
-    const response = await fetch('markCompleteFrozen', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-    
-    }
-}
-
-
-async function markSnackComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-    try{
-    const response = await fetch('markCompleteSnack', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-
-    }
-}
-        
-        
-async function markPersonalComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-    try{
-    const response = await fetch('markCompletePersonal', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-    
-    }
-}
-
-
-    
-//functins for all the mark incompelete 
-async function markUndoVeggiesComplete(){
-const listText = this.dataset.id
-console.log(listText,"mark undo veggies")
-
-    try{
-    const response = await fetch('undoCompleteVeggies', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-    }
-}
-
-async function markUndoMeatComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-    try{
-    const response = await fetch('undoCompleteMeat', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-    }
-}
-
-async function markUndoGrainComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-    try{
-    const response = await fetch('undoCompleteGrain', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-    }
-}
-    
-async function markUndoFrozenComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-try{
-const response = await fetch('undoCompleteFrozen', {
-    method: 'put',
-    headers: {'Content-type': 'application/json'},
-    body: JSON.stringify({
-        'basketItem': listText
-    })
-})
-const data = await response.json()
-console.log(data)
-location.reload()
-
-}catch(err){
-    console.log(err)
-}
-}
-
-async function markUndoSnackComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-    try{
-    const response = await fetch('undoCompleteSnack', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
-    location.reload()
-
-    }catch(err){
-        console.log(err)
-    }
-}
-
-async function markUndoPersonalComplete(){
-const listText = this.parentNode.childNodes[3].innerText
-    try{
-    const response = await fetch('undoCompletePersonal', {
-        method: 'put',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-            'basketItem': listText
-        })
-    })
-    const data = await response.json()
-    console.log(data)
     location.reload()
 
     }catch(err){
