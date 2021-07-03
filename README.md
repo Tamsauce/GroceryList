@@ -3,6 +3,7 @@
 ### Connect with me or view the application live: 
 
 Contact me on Twitter at [@tamsauce] or LinkedIn at [@tami_hughes]
+
 Click [here] to see the app in action.
 
 ## Images of App:
