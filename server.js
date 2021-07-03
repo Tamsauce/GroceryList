@@ -286,8 +286,8 @@ app.put('/undoCompletePersonal', (req, res) => {
 
 
 //delete veggies 
-app.delete('/deleteVeggies', (req, res) => {
-    db.collection('veggies').findOneAndDelete({_id: ObjectId(req.body.basketItem)})
+app.delete('/deleteItem', (req, res) => {
+    db.collection(req.body.subFolder).findOneAndDelete({_id: ObjectId(req.body.basketItem)})
         .then(result => {
             console.log('Deleted list item')
             res.json('Deleted it')
@@ -297,14 +297,14 @@ app.delete('/deleteVeggies', (req, res) => {
 
 
 //delete meats 
-app.delete('/deleteMeats', (req, res) => {
-    db.collection('meats').deleteOne({list: req.body.basketItem})
-        .then(result => {
-            console.log('Deleted list item')
-            res.json('Deleted it')
-        })
-        .catch(err => console.log(err))
-})
+// app.delete('/deleteItem', (req, res) => {
+//     db.collection(req.body.subFolder).findOneAndDelete({_id: ObjectId(req.body.basketItem)})
+//         .then(result => {
+//             console.log('Deleted list item')
+//             res.json('Deleted it')
+//         })
+//         .catch(err => console.log(err))
+// })
 
 
 //delete grains

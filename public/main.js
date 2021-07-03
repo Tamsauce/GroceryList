@@ -21,15 +21,19 @@ const undoFrozenComplete = document.querySelectorAll('.groceryFrozenList span.co
 const undoSnackComplete = document.querySelectorAll('.grocerySnackList span.completed')
 const undoPersonalComplete = document.querySelectorAll('.groceryPersonalList span.completed')
 
-console.log(undoVeggieComplete, veggieComplete)
+
 
 
 Array.from(deleteVeggiesItem).forEach((element) => {
-    element.addEventListener('click',deleteVeggies)
+    element.addEventListener('click', () => {
+        deleteItem(element.dataset.id, 'veggies')
+    })
 })
 
 Array.from(deleteMeatsItem).forEach((element) => {
-    element.addEventListener('click',deleteMeats)
+    element.addEventListener('click', () => {
+        deleteItem(element.dataset.id, 'meats')
+    })
 })
 
 Array.from(deleteGrainsItem).forEach((element) => {
@@ -112,15 +116,16 @@ Array.from(undoPersonalComplete).forEach((element) => {
 
 
 // Functions for all the deletes 
-async function deleteVeggies(){
-    const veggieId = this.dataset.id
-    console.log(veggieId)
+async function deleteItem(listText,subFolder){
+    // const listText = this.dataset.id
+    // console.log(veggieId)
     try{
-        const response = await fetch('deleteVeggies', {
+        const response = await fetch('deleteItem', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'basketItem':veggieId
+                'basketItem':listText,
+                'subFolder':subFolder
             })
         })
         const data = await response.json()
@@ -133,10 +138,10 @@ async function deleteVeggies(){
   
 }
 
-async function deleteMeats(){
-    const listText = this.parentNode.childNodes[3].innerText
+async function deleteMeats(listText, route){
+    // const listText = this.dataset.id
     try{
-        const response = await fetch('deleteMeats', {
+        const response = await fetch(route, {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
