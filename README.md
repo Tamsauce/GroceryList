@@ -3,6 +3,7 @@
 ### Connect with me or view the application live: 
 
 Contact me on Twitter at [@tamsauce] or LinkedIn at [@tami_hughes]
+<<<<<<< HEAD
 Click [here] to see the app in action.
 
 ## Images of App:
@@ -10,6 +11,10 @@ Click [here] to see the app in action.
 [<img src="public/labtopView.JPG">]
 [<img src="public/cellphoneView.JPG">]
 
+=======
+
+Click [here] to see the app in action.
+>>>>>>> 7b7487c4250b931e9af5369aba9245e7cba9dff6
 ## _Designed to shorten your trips at the store:_ 
 Full Stack, responsive, Grocery Store CRUD app.  
 
