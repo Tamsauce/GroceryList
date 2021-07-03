@@ -30,7 +30,7 @@ app.get('/', async (req, res) =>{
     const groceryVeggieItems = await db.collection('veggies').find().toArray()
     const veggiesRemaining = await db.collection('veggies').countDocuments(
         {completed: false})
-        console.log(groceryVeggieItems)
+      
 
     const groceryMeatItems = await db.collection('meats').find().toArray()
     const meatsRemaining = await db.collection('meats').countDocuments(
@@ -59,11 +59,8 @@ app.get('/', async (req, res) =>{
 
 //post veggies 
 app.post('/createVeggies', (req, res) => {
-    console.log(req.body.groceryVeggieList)
     db.collection('veggies').insertOne({list: req.body.groceryVeggieList, quantity: req.body.quantity, size: req.body.size, completed:false})
         .then(result => {
-
-            console.log('Your list item has been added')
             res.redirect('/')
         })
 })
@@ -71,20 +68,16 @@ app.post('/createVeggies', (req, res) => {
 
 //post meat 
 app.post('/createMeat', (req, res) => {
-    console.log(req.body.groceryMeatList)
-    db.collection('meats').insertOne({list: req.body.groceryMeatList, quantity: req.body.quantity, completed:false})
+    db.collection('meats').insertOne({list: req.body.groceryMeatList, quantity: req.body.quantity, size: req.body.size, completed:false})
         .then(result => {
-            console.log('Your list item has been added')
             res.redirect('/')
         })
 })
 
 //post grains
 app.post('/createGrains', (req, res) => {
-    console.log(req.body.groceryGrainList)
-    db.collection('grains').insertOne({list: req.body.groceryGrainList, quantity: req.body.quantity, completed:false})
+    db.collection('grains').insertOne({list: req.body.groceryGrainList, quantity: req.body.quantity, size: req.body.size, completed:false})
         .then(result => {
-            console.log('Your list item has been added')
             res.redirect('/')
         })
 })
@@ -92,20 +85,16 @@ app.post('/createGrains', (req, res) => {
 
 //post frozen
 app.post('/createFrozen', (req, res) => {
-    console.log(req.body.groceryFrozenList)
-    db.collection('frozen').insertOne({list: req.body.groceryFrozenList, quantity: req.body.quantity, completed:false})
+    db.collection('frozen').insertOne({list: req.body.groceryFrozenList, quantity: req.body.quantity, size: req.body.size, completed:false})
         .then(result => {
-            console.log('Your list item has been added')
             res.redirect('/')
         })
 })
 
 // post snacks 
 app.post('/createSnacks', (req, res) => {
-    console.log(req.body.grocerySnackList)
-    db.collection('snacks').insertOne({list: req.body.grocerySnackList, quantity: req.body.quantity, completed:false})
+    db.collection('snacks').insertOne({list: req.body.grocerySnackList, quantity: req.body.quantity, size: req.body.size, completed:false})
         .then(result => {
-            console.log('Your list item has been added')
             res.redirect('/')
         })
 })
@@ -113,10 +102,8 @@ app.post('/createSnacks', (req, res) => {
 
 //post personal 
 app.post('/createPersonal', (req, res) => {
-    console.log(req.body.groceryPersonalList)
-    db.collection('personal').insertOne({list: req.body.groceryPersonalList, quantity: req.body.quantity, completed:false})
+    db.collection('personal').insertOne({list: req.body.groceryPersonalList, quantity: req.body.quantity, size: req.body.size, completed:false})
         .then(result => {
-            console.log('Your list item has been added')
             res.redirect('/')
         })
 })
@@ -296,59 +283,6 @@ app.delete('/deleteItem', (req, res) => {
 })
 
 
-//delete meats 
-// app.delete('/deleteItem', (req, res) => {
-//     db.collection(req.body.subFolder).findOneAndDelete({_id: ObjectId(req.body.basketItem)})
-//         .then(result => {
-//             console.log('Deleted list item')
-//             res.json('Deleted it')
-//         })
-//         .catch(err => console.log(err))
-// })
-
-
-//delete grains
-app.delete('/deleteGrains', (req, res) => {
-    db.collection('grains').deleteOne({list: req.body.basketItem})
-        .then(result => {
-            console.log('Deleted list item')
-            res.json('Deleted it')
-        })
-        .catch(err => console.log(err))
-})
-
-
-//delete frozen
-app.delete('/deleteFrozen', (req, res) => {
-    db.collection('frozen').deleteOne({list: req.body.basketItem})
-        .then(result => {
-            console.log('Deleted list item')
-            res.json('Deleted it')
-        })
-        .catch(err => console.log(err))
-})
-
-
-//delete snacks
-app.delete('/deleteSnacks', (req, res) => {
-    db.collection('snacks').deleteOne({list: req.body.basketItem})
-        .then(result => {
-            console.log('Deleted list item')
-            res.json('Deleted it')
-        })
-        .catch(err => console.log(err))
-})
-
-
-//delete personal
-app.delete('/deletePersonal', (req, res) => {
-    db.collection('personal').deleteOne({list: req.body.basketItem})
-        .then(result => {
-            console.log('Deleted list item')
-            res.json('Deleted it')
-        })
-        .catch(err => console.log(err))
-})
 
 //listen to me
 app.listen(process.env.PORT || PORT, () => {
