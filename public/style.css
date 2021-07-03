@@ -24,8 +24,13 @@ h6{
 .number{
     background: white;
     border-radius: .25rem;
-    padding: .05rem .3rem;
-    border: .1rem solid rgb(82,104,83, 1)
+    padding: .01rem .3rem;
+    border: .1rem solid rgb(82,104,83, 1);
+    line-height: 150%;
+}
+
+select{
+    width: 45% !important;
 }
 
 /* .grocery{
@@ -94,9 +99,6 @@ h4{
     font-size: .9375rem;
     padding: .25rem 0;
     border-bottom: .063rem solid #f3f3f3;
-    /* padding: .3rem;
-    border: .1rem solid #f3f3f3;
-    margin: .3rem; */
 }
 
 .list-wrapper ul {
@@ -107,7 +109,6 @@ h4{
 
 
 .list-wrapper ul li .form-check {
-    /* max-width: 90%; */
     margin: .10rem 0;  
 }
 
@@ -133,91 +134,35 @@ h4{
 }
 
 
-/* .list-wrapper ul li:last-child {
-    border-bottom: none
-} */
 
 
 
 .list-wrapper .completed {
     text-decoration: line-through;
-    text-decoration-color: #000
+    text-decoration-color: rgba(0,112,68, 1);
+    text-decoration-thickness: 2px;
+    color: gray;
 }
 
 .completed .form-check {
     background: rgb(0,112,68, 1);
 }
 
-/* .categories{
-    font-size: 1.2rem;
-    display: flex;
-    flex-direction: row; 
-     */
-/* } */
+
 
 h5{
     text-decoration: underline .175rem solid rgba(0,112,68, 1);
 }
 
 
-input[type="text"]:focus, input[type="number"]:focus{
+.form-control:focus{
     border-color: rgba(0,112,68, .8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 112, 68, 0.6);
     outline: 0 none;
 }
 
 
-/* .add-items input[type="text"] {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    width: 100%;
-    background: transparent
-    
-} */
 
-
-
-/* not sure what this is doing
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid #d2d2dc;
-    border-radius: 0
-} 
-
-.pl-3,
-.px-3 {
-    padding-left: 1rem !important
-}
-
-.flex {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto
-}
-
-.list-wrapper ul li .form-check {
-    max-width: 90%;
-    margin-top: .25rem;
-    margin-bottom: .25rem
-}
-
-
-
- .list-wrapper {
-    height: 100%;
-    max-height: 100%
-} 
-
-.list-wrapper {
-    height: 100%;
-    max-height: 100%
-}
 
 .d-flex {
     display: flex !important
@@ -225,23 +170,11 @@ input[type="text"]:focus, input[type="number"]:focus{
 
 
 
-*/
 
-/* .list-wrapper .remove {
-    cursor: pointer;
-    font-size: 1.438rem;
-    font-weight: 600;
-    width: 1.25rem;
-    height: 1.25rem;
-    line-height: 20px;
-    text-align: center
-}  */
 
 .btn {
     font-size: 0.8rem;
     line-height: 1;
-    /* font-weight: 400; */
-    /* padding: .2rem 1.3rem; */
     border-radius: 0.1275rem
 }
 
@@ -263,11 +196,7 @@ input[type="text"]:focus, input[type="number"]:focus{
 }
 
 @media (max-width:1015px) {
-    /* .padding {
-        padding: 1rem 0; 
-    } */
-
-    h2{
+   h2{
         font-size: 4rem;
         top: 65px;
     }
@@ -306,9 +235,7 @@ input[type="text"]:focus, input[type="number"]:focus{
         font-size: 2rem;
         top: 30px;
     }
-    /* .card{
-        margin-left: 1rem;
-    } */
+    
 }
 
 @media (max-width:280px) {
@@ -316,9 +243,7 @@ input[type="text"]:focus, input[type="number"]:focus{
         font-size: 1.5rem;
         top: 20px;
     }
-    /* .card{
-        margin-left: 2rem;
-    } */
+   
 }
 
 
@@ -333,27 +258,6 @@ input[type="text"]:focus, input[type="number"]:focus{
 
 
 
-
-
-/* position: relative;
-top: 90px;
-padding: 0 1rem; */
-
-
-/* .headLine{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0;
-} */
-
-/* .add-items input[type="text"] {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    width: 100%;
-    background: transparent
-} */
 
 
 
@@ -373,30 +277,6 @@ padding: 0 1rem; */
 
 
 
-/* .add-items .btn,
-.add-items .fc button,
-.fc .add-items button,
-.add-items .ajax-upload-dragdrop .ajax-file-upload,
-.ajax-upload-dragdrop .add-items .ajax-file-upload,
-.add-items .swal2-modal .swal2-buttonswrapper .swal2-styled,
-.swal2-modal .swal2-buttonswrapper .add-items .swal2-styled,
-.add-items .wizard>.actions a,
-.wizard>.actions .add-items a {
-    margin-left: .5rem
-} */
-
-/* .rtl .add-items .btn,
-.rtl .add-items .fc button,
-.fc .rtl .add-items button,
-.rtl .add-items .ajax-upload-dragdrop .ajax-file-upload,
-.ajax-upload-dragdrop .rtl .add-items .ajax-file-upload,
-.rtl .add-items .swal2-modal .swal2-buttonswrapper .swal2-styled,
-.swal2-modal .swal2-buttonswrapper .rtl .add-items .swal2-styled,
-.rtl .add-items .wizard>.actions a,
-.wizard>.actions .rtl .add-items a {
-    margin-left: auto;
-    margin-right: .5rem
-} */
 
 
 
@@ -406,19 +286,6 @@ padding: 0 1rem; */
 
 
 
-
-/* .list-wrapper ul li .form-check,
-.list-wrapper ul li .form-check .form-check-label,
-.email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name,
-.email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation,
-.email-wrapper .mail-list-container .mail-list .content .sender-name,
-.email-wrapper .message-body .attachments-sections ul li .details p.file-name,
-.settings-panel .chat-list .list .info p {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 100%;
-    white-space: nowrap
-} */
 
 .form-check {
     position: relative;
@@ -427,18 +294,7 @@ padding: 0 1rem; */
     padding-left: 0
 }
 
-/* .list-wrapper ul li .form-check,
-.list-wrapper ul li .form-check .form-check-label,
-.email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name,
-.email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation,
-.email-wrapper .mail-list-container .mail-list .content .sender-name,
-.email-wrapper .message-body .attachments-sections ul li .details p.file-name,
-.settings-panel .chat-list .list .info p {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 100%;
-    white-space: nowrap
-} */
+
 
 .form-check .form-check-label {
     min-height: 1.125rem;
@@ -448,79 +304,14 @@ padding: 0 1rem; */
     line-height: 1.5
 }
 
-/* .form-check-label {
-    margin-bottom: 0
-} */
 
-/* .list-wrapper input[type="checkbox"] {
-    margin-right: 15px
-} */
-
-
-
-/* input[type="radio"],
-input[type="checkbox"] {
-    box-sizing: border-box;
-    padding: 0
-} */
-
-/* .list-wrapper ul li .form-check,
-.list-wrapper ul li .form-check .form-check-label,
-.email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name,
-.email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation,
-.email-wrapper .mail-list-container .mail-list .content .sender-name,
-.email-wrapper .message-body .attachments-sections ul li .details p.file-name,
-.settings-panel .chat-list .list .info p {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 100%;
-    white-space: nowrap
-} */
-
-/* .form-check .form-check-label input[type="checkbox"]+.input-helper:before {
-    content: "";
-    width: 18px;
-    height: 18px;
-    border-radius: 2px;
-    border: solid #405189;
-    border-width: 2px;
-    -webkit-transition: all;
-    -moz-transition: all;
-    -ms-transition: all;
-    -o-transition: all;
-    transition: all;
-    transition-duration: 0s;
-    -webkit-transition-duration: 250ms;
-    transition-duration: 250ms
-} */
-
-/* .form-check .form-check-label input[type="checkbox"]+.input-helper:before,
-.form-check .form-check-label input[type="checkbox"]+.input-helper:after {
-    position: absolute;
-    top: 0;
-    left: 0
-} */
 
 .form-check .form-check-label input[type="checkbox"]+.input-helper:after {
-    /* -webkit-transition: all;
-    -moz-transition: all;
-    -ms-transition: all;
-    -o-transition: all;
-    transition: all; */
-    /* transition-duration: 0s;
-    -webkit-transition-duration: 250ms;
-    transition-duration: 250ms;
-    font-family: Material Design Icons; */
-    /* opacity: 0;
-    filter: alpha(opacity=0); */
     -webkit-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
     transform: scale(0);
-    /* content: '\F12C'; */
-    /* font-size: .9375rem;
-    font-weight: bold;
-    color: #ffffff */
+   
 }
 
 .form-check .form-check-label input[type="checkbox"]+.input-helper:before,
@@ -529,6 +320,7 @@ input[type="checkbox"] {
     top: 0;
     left: 0
 }
+
 
 
 
@@ -572,7 +364,7 @@ input[type="checkbox"] {
 }
 
 
-/* also doesn't seem to be doing anything */
+
 .form-check .form-check-label input[type="checkbox"]+.input-helper:after {
     font-family: FontAwesome;
     content: "\f095";
@@ -582,13 +374,8 @@ input[type="checkbox"] {
     color: #fff
 }
 
-/* .text-primary,
-.list-wrapper .completed .remove {
-    color: hsl(226, 36%, 39%) !important
-} */
 
 
-/* doesn't seem to be doing anything */
 .list-wrapper .remove {
     cursor: pointer;
     font-size: 1.438rem;
@@ -600,17 +387,6 @@ input[type="checkbox"] {
     
 }
 
-
-/* will not need after the rest of the cards are made correctly*/
-.ml-auto,
-.list-wrapper .remove,
-.mx-auto {
-    margin-left: auto !important
-}
-
-.mdi-close-circle-outline:before {
-    content: "\F15A"
-}
 
 .list-wrapper ul li {
     font-size: .9375rem;
@@ -627,14 +403,6 @@ input[type="checkbox"] {
     font-size: .756em;
     color: rgb(0,112,68, 1)
 }
-
-/* .list-wrapper ul {
-    padding: 0;
-    text-align: left;
-    list-style: none;
-    margin-bottom: 0
-} */
-
 
 
 
