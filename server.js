@@ -112,162 +112,185 @@ app.post('/createPersonal', (req, res) => {
 
 
 
-//put veggies 
-app.put('/markCompleteVeggies',(req, res) => {
-    db.collection('veggies').update({_id: ObjectId(req.body.basketItem)}, {
+
+
+app.put('/markCompleteItem',(req, res) => {
+    db.collection(req.body.subFolder).update({_id: ObjectId(req.body.basketItem)}, {
         $set: {
             completed: true
         }
     })
     .then(result => {
-        console.log('Marked Complete')
         res.json('Mark Complete')
+    })
+})
+
+app.put('/undoCompleteItem', (req, res) => {
+    db.collection(req.body.subFolder).update({_id: ObjectId(req.body.basketItem)}, {
+        $set: {
+            completed: false
+        }
+    })
+    .then(result => {
+        res.json('Undo Complete')
+    })
+})
+
+
+// //put veggies 
+// app.put('/markCompleteVeggies',(req, res) => {
+//     db.collection('veggies').update({_id: ObjectId(req.body.basketItem)}, {
+//         $set: {
+//             completed: true
+//         }
+//     })
+//     .then(result => {
+//         console.log('Marked Complete')
+//         res.json('Mark Complete')
        
-    })
-})
+//     })
+// })
 
-app.put('/undoCompleteVeggies', (req, res) => {
-    db.collection('veggies').update({_id: ObjectId(req.body.basketItem)}, {
-        $set: {
-            completed: false
-        }
-    })
-    .then(result => {
-        console.log('Undo Completed')
-        res.json('Undo Complete')
-    })
-})
-
-
-//put meats
-app.put('/markCompleteMeat',(req, res) => {
-    db.collection('meats').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: true
-        }
-    })
-    .then(result => {
-        console.log('Marked Complete')
-        res.json('Mark Complete')
-    })
-})
-
-app.put('/undoCompleteMeat', (req, res) => {
-    db.collection('meats').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: false
-        }
-    })
-    .then(result => {
-        console.log('Undo Completed')
-        res.json('Undo Complete')
-    })
-})
+// app.put('/undoCompleteVeggies', (req, res) => {
+//     db.collection('veggies').update({_id: ObjectId(req.body.basketItem)}, {
+//         $set: {
+//             completed: false
+//         }
+//     })
+//     .then(result => {
+//         console.log('Undo Completed')
+//         res.json('Undo Complete')
+//     })
+// })
 
 
+// //put meats
+// app.put('/markCompleteMeat',(req, res) => {
+//     db.collection('meats').updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: true
+//         }
+//     })
+//     .then(result => {
+//         console.log('Marked Complete')
+//         res.json('Mark Complete')
+//     })
+// })
 
-//put grains
-app.put('/markCompleteGrain',(req, res) => {
-    db.collection('grains').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: true
-        }
-    })
-    .then(result => {
-        console.log('Marked Complete')
-        res.json('Mark Complete')
-    })
-})
-
-app.put('/undoCompleteGrain', (req, res) => {
-    db.collection('grains').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: false
-        }
-    })
-    .then(result => {
-        console.log('Undo Completed')
-        res.json('Undo Complete')
-    })
-})
-
-
-//put frozen
-app.put('/markCompletefrozen',(req, res) => {
-    db.collection('frozen').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: true
-        }
-    })
-    .then(result => {
-        console.log('Marked Complete')
-        res.json('Mark Complete')
-    })
-})
-
-app.put('/undoCompletefrozen', (req, res) => {
-    db.collection('frozen').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: false
-        }
-    })
-    .then(result => {
-        console.log('Undo Completed')
-        res.json('Undo Complete')
-    })
-})
+// app.put('/undoCompleteMeat', (req, res) => {
+//     db.collection('meats').updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: false
+//         }
+//     })
+//     .then(result => {
+//         console.log('Undo Completed')
+//         res.json('Undo Complete')
+//     })
+// })
 
 
-//put snacks
-app.put('/markCompleteSnack',(req, res) => {
-    db.collection('snacks').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: true
-        }
-    })
-    .then(result => {
-        console.log('Marked Complete')
-        res.json('Mark Complete')
-    })
-})
 
-app.put('/undoCompleteSnack', (req, res) => {
-    db.collection('snacks').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: false
-        }
-    })
-    .then(result => {
-        console.log('Undo Completed')
-        res.json('Undo Complete')
-    })
-})
+// //put grains
+// app.put('/markCompleteGrain',(req, res) => {
+//     db.collection('grains').updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: true
+//         }
+//     })
+//     .then(result => {
+//         console.log('Marked Complete')
+//         res.json('Mark Complete')
+//     })
+// })
+
+// app.put('/undoCompleteGrain', (req, res) => {
+//     db.collection('grains').updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: false
+//         }
+//     })
+//     .then(result => {
+//         console.log('Undo Completed')
+//         res.json('Undo Complete')
+//     })
+// })
+
+
+// //put frozen
+// app.put('/markCompletefrozen',(req, res) => {
+//     db.collection('frozen').updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: true
+//         }
+//     })
+//     .then(result => {
+//         console.log('Marked Complete')
+//         res.json('Mark Complete')
+//     })
+// })
+
+// app.put('/undoCompletefrozen', (req, res) => {
+//     db.collection('frozen').updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: false
+//         }
+//     })
+//     .then(result => {
+//         console.log('Undo Completed')
+//         res.json('Undo Complete')
+//     })
+// })
+
+
+// //put snacks
+// app.put('/markCompleteSnack',(req, res) => {
+//     db.collection('snacks').updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: true
+//         }
+//     })
+//     .then(result => {
+//         console.log('Marked Complete')
+//         res.json('Mark Complete')
+//     })
+// })
+
+// app.put('/undoCompleteSnack', (req, res) => {
+//     db.collection('snacks').updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: false
+//         }
+//     })
+//     .then(result => {
+//         console.log('Undo Completed')
+//         res.json('Undo Complete')
+//     })
+// })
 
 
 //put personal
-app.put('/markCompletePersonal',(req, res) => {
-    db.collection('personal').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: true
-        }
-    })
-    .then(result => {
-        console.log('Marked Complete')
-        res.json('Mark Complete')
-    })
-})
+// app.put('/markCompleteItem',(req, res) => {
+//     db.collection(req.body.subFolder).updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: true
+//         }
+//     })
+//     .then(result => {
+//         res.json('Mark Complete')
+//     })
+// })
 
-app.put('/undoCompletePersonal', (req, res) => {
-    db.collection('personal').updateOne({list: req.body.basketItem}, {
-        $set: {
-            completed: false
-        }
-    })
-    .then(result => {
-        console.log('Undo Completed')
-        res.json('Undo Complete')
-    })
-})
+// app.put('/undoCompleteItem', (req, res) => {
+//     db.collection(req.body.subFolder).updateOne({list: req.body.basketItem}, {
+//         $set: {
+//             completed: false
+//         }
+//     })
+//     .then(result => {
+//         res.json('Undo Complete')
+//     })
+// })
 
 
 
@@ -276,7 +299,6 @@ app.put('/undoCompletePersonal', (req, res) => {
 app.delete('/deleteItem', (req, res) => {
     db.collection(req.body.subFolder).findOneAndDelete({_id: ObjectId(req.body.basketItem)})
         .then(result => {
-            console.log('Deleted list item')
             res.json('Deleted it')
         })
         .catch(err => console.log(err))
