@@ -84,206 +84,276 @@
                             </div>
                         </div>
                     </div>
-       
+           
         
-       
-                    <div class="col-md-4">
-                        <div class="card px-2">
-                            <div class="card-body">
-                                <h4 class="card-title">Beef, Fish & Poultry</h4>
-                                <div class="list-wrapper">
-        
-                                    <form action="/createMeat" method="POST">
-                                        <div class="add-items d-flex">
-                                            <input type="text" class="form-control todo-list-input" placeholder="Meat:" name="groceryMeatList">
-                                            <input type="number" class="form-control todo-list-input" placeholder="Weight" name="quantity" step="any">
-                                            <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
-                                        </div>
-                                    </form>
-                                    <div class="items container-fluid d-flex justify-content-start">
-                                        <div class="items container-fluid d-flex justify-content-start">
-                                           <h5>Items</h5>
-                                       </div>
-                                       <div class="container-fluid d-flex justify-content-center">
-                                           <h5>Weight</h5>
-                                       </div>
-                                    </div>
-        
-                                    <ul class="d-flex flex-column todo-list">
-                                        <% for(let i = 0; i < groceryMeatItem.length; i++) { %>
-                                            <li class='groceryMeatList'>
-                                                <div class="form-check"><label class="form-check-label"><input   class="checkbox" type="checkbox">
-                                                    <i class="input-helper"></i></label>
-                                               </div>
-                                            <% if (groceryMeatItem[i].completed === true) {%>
-                                                <div class="container d-flex justify-content-start"><span class="completed "><%= groceryMeatItem[i].list %></span></div>
-                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryMeatItem[i].quantity %></span></div>
-                                                <% }else{ %>
-                                                    <div class="container d-flex justify-content-start"><span><%= groceryMeatItem[i].list %></span></div>
-                                                    <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryMeatItem[i].quantity %></span></div>
-                                                <% } %>
-                                            <i class="deleteMeats remove mdi mdi-close-circle-outline"></i>
-                                            </li>
-                                         <% } %>
-                                    </ul>
-                                    <h6>Remaining Items in this section: <span class="number"><%= meatsRemain %></span></h6>
-                                </div>
+
+
+
+  
+    
+        <div class="col-md-4">
+            <div class="card px-2">
+                <div class="card-body">
+                    <h4 class="card-title">Beef, Fish & Poultry</h4>
+                    <div class="list-wrapper">
+
+                        <form action="/createMeat" method="POST">
+                            <div class="add-items d-flex">
+                                <input type="text" class="form-control" placeholder="Meat:" name="groceryMeatList" required>
+                                <input type="number" class="form-control" placeholder="Weight:" name="quantity" required>
+                                <select class="form-control" aria-label=".form-select-lg example" name="size">
+                                    <option selected>Size</option>
+                                    <option value="lbs">lbs</option>
+                                    <option value="oz">oz</option>
+                                    <option value="kg">kg</option>
+                                    </select>
+                                <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
                             </div>
+                        </form>
+
+                        <div class="items container-fluid d-flex justify-content-start">
+                            <div class="items container-fluid d-flex justify-content-start">
+                            <h5>Items:</h5>
+                        </div>
+                        <div class="container-fluid d-flex justify-content-center">
+                            <h5>Weight:</h5>
+                        </div>
+                        </div>
+
+                        <ul class="d-flex flex-column todo-list">
+                            <% for(let i = 0; i < groceryMeatItem.length; i++) { %>
+                                <li class='groceryMeatList'>
+                                <% if (groceryMeatItem[i].completed === true) {%>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" checked>
+                                        <i class="input-helper input-completed" data-id="<%= groceryMeatItem[i]._id %>"></i></label></div>
+                                    <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryMeatItem[i].list %></span></div>
+                                    <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryMeatItem[i].quantity %></span><span class="quantityItems"><%= groceryMeatItem[i].size %></span></div>
+                                    <% }else{ %>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox">
+                                        <i class="input-helper input-incompleted" data-id="<%= groceryMeatItem[i]._id %>"></i></label></div>
+                                    <div class="container  d-flex justify-content-start"><span><%= groceryMeatItem[i].list %></span></div>
+                                    <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryMeatItem[i].quantity %></span><span class="quantityItems"><%= groceryMeatItem[i].size %></span></div>
+                                    <% } %>
+                                <i class="deleteMeats remove mdi mdi-close-circle-outline" data-id="<%= groceryMeatItem[i]._id %>" ></i>
+                                </li>
+                                <% } %>
+                        </ul>
+                        <h6>Remaining Items in this section: <span class="number"><%= meatsRemain %></span></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="padding row d-flex justify-content-center">
+            <div class="col-md-4">
+                <div class="card px-2">
+                    <div class="card-body">
+                        <h4 class="card-title">Bakery & Perpared Foods</h4>
+                        <div class="list-wrapper">
+
+                            <form action="/createGrains" method="POST">
+                                <div class="add-items d-flex">
+                                    <input type="text" class="form-control" placeholder="Grains:" name="groceryGrainList" required>
+                                    <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
+                                    <select class="form-control" aria-label=".form-select-lg example" name="size">
+                                        <option selected>Size</option>
+                                        <option value="Bag">Bag</option>
+                                        <option value="Box">Box</option>
+                                        <option value="Can">Can</option>
+                                        <option value="Carton">Carton</option>
+                                        <option value="Each">Each</option>
+                                        <option value="Jar">Jar</option>
+                                        <option value="Pack">Pack</option>
+                                    </select>
+                                    <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
+                                </div>
+                            </form>
+
+                            <div class="items container-fluid d-flex justify-content-start">
+                                <div class="items container-fluid d-flex justify-content-start">
+                                <h5>Items:</h5>
+                            </div>
+                            <div class="container-fluid d-flex justify-content-center">
+                                <h5>Quantity:</h5>
+                            </div>
+                            </div>
+
+                            <ul class="d-flex flex-column todo-list">
+                                <% for(let i = 0; i < groceryGrainItem.length; i++) { %>
+                                    <li class='groceryGrainList'>
+                                    <% if (groceryGrainItem[i].completed === true) {%>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked>
+                                            <i class="input-helper input-completed" data-id="<%= groceryGrainItem[i]._id %>"></i></label></div>
+                                        <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryGrainItem[i].list %></span></div>
+                                        <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryGrainItem[i].quantity %></span><span class="quantityItems"><%= groceryGrainItem[i].size %></span></div>
+                                        <% }else{ %>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            <i class="input-helper input-incompleted" data-id="<%= groceryGrainItem[i]._id %>"></i></label></div>
+                                        <div class="container  d-flex justify-content-start"><span><%= groceryGrainItem[i].list %></span></div>
+                                        <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryGrainItem[i].quantity %></span><span class="quantityItems"><%= groceryGrainItem[i].size %></span></div>
+                                        <% } %>
+                                    <i class="deleteGrains remove mdi mdi-close-circle-outline" data-id="<%= groceryGrainItem[i]._id %>" ></i>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                            <h6>Remaining Items in this section: <span class="number"><%= grainsRemain %></span></h6>
                         </div>
                     </div>
-                    
-        </div>
-    </div>
+                </div>
+            </div>
  
 
 
 
-
-
-
-
-    <div class="container-fluid">
-        <div class="padding row d-flex justify-content-center">
-                    <div class="col-md-4">
-                        <div class="card px-2">
-                            <div class="card-body">
-                                <h4 class="card-title">Bakery & Perpared Food</h4>
-                                <div class="list-wrapper">
-        
-                                    <form action="/createGrains" method="POST">
-                                        <div class="add-items d-flex">
-                                            <input type="text" class="form-control todo-list-input" placeholder="Bakery:" name="groceryGrainList" required>
-                                            <input type="number" class="form-control todo-list-input" placeholder="Quantity:" name="quantity" required>
-                                            <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
-                                        </div>
-                                    </form>
-                                 <div class="categories container-fluid d-flex justify-content-around ">
-                                    <h5>Items</h5>
-                                    <h5>Quantity</h5>
+       
+                <div class="col-md-4">
+                    <div class="card px-2">
+                        <div class="card-body">
+                            <h4 class="card-title">Dairy & Frozen</h4>
+                            <div class="list-wrapper">
+    
+                                <form action="/createFrozen" method="POST">
+                                    <div class="add-items d-flex">
+                                        <input type="text" class="form-control" placeholder="Dairy:" name="groceryFrozenList" required>
+                                        <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
+                                        <select class="form-control" aria-label=".form-select-lg example" name="size">
+                                            <option selected>Size</option>
+                                            <option value="Bag">Bag</option>
+                                            <option value="Box">Box</option>
+                                            <option value="Can">Can</option>
+                                            <option value="Carton">Carton</option>
+                                            <option value="Each">Each</option>
+                                            <option value="Jar">Jar</option>
+                                            <option value="Pack">Pack</option>
+                                        </select>
+                                        <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
+                                    </div>
+                                </form>
+    
+                                <div class="items container-fluid d-flex justify-content-start">
+                                    <div class="items container-fluid d-flex justify-content-start">
+                                    <h5>Items:</h5>
                                 </div>
-        
-                                    <ul class="d-flex flex-column todo-list">
-                                        <% for(let i = 0; i < groceryGrainItem.length; i++) { %>
-                                            <li class='groceryGrainList'>
-                                                <div class="form-check"><label class="form-check-label"><input   class="checkbox" type="checkbox">
-                                                    <i class="input-helper"></i></label>
-                                               </div>
-                                            <% if (groceryGrainItem[i].completed === true) {%>
-                                                <span class="completed "><%= groceryGrainItem[i].list %></span>
-                                                <span class="quantityItems"><%= groceryGrainItem[i].quantity %></span>
-                                                <% }else{ %>
-                                                <span><%= groceryGrainItem[i].list %></span>
-                                                <span class="quantityItems"><%= groceryGrainItem[i].quantity %></span>
-                                                <% } %>
-                                            <i class="deleteGrains remove mdi mdi-close-circle-outline"></i>
-                                            </li>
-                                         <% } %>
-                                    </ul>
-                                    <h6>Remaining Items in this section: <span class="number"><%= grainsRemain %></span></h6>
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <h5>Quantity:</h5>
                                 </div>
+                                </div>
+    
+                                <ul class="d-flex flex-column todo-list">
+                                    <% for(let i = 0; i < groceryFrozenItem.length; i++) { %>
+                                        <li class='groceryFrozenList'>
+                                        <% if (groceryFrozenItem[i].completed === true) {%>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                <input class="checkbox" type="checkbox" checked>
+                                                <i class="input-helper input-completed" data-id="<%= groceryFrozenItem[i]._id %>"></i></label></div>
+                                            <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryFrozenItem[i].list %></span></div>
+                                            <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryFrozenItem[i].quantity %></span><span class="quantityItems"><%= groceryFrozenItem[i].size %></span></div>
+                                            <% }else{ %>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                <input class="checkbox" type="checkbox">
+                                                <i class="input-helper input-incompleted" data-id="<%= groceryFrozenItem[i]._id %>"></i></label></div>
+                                            <div class="container  d-flex justify-content-start"><span><%= groceryFrozenItem[i].list %></span></div>
+                                            <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryFrozenItem[i].quantity %></span><span class="quantityItems"><%= groceryFrozenItem[i].size %></span></div>
+                                            <% } %>
+                                        <i class="deleteFrozen remove mdi mdi-close-circle-outline" data-id="<%= groceryFrozenItem[i]._id %>" ></i>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                                <h6>Remaining Items in this section: <span class="number"><%= frozenRemain %></span></h6>
                             </div>
                         </div>
                     </div>
-       
-        
-       
-                    <div class="col-md-4">
-                        <div class="card px-2">
-                            <div class="card-body">
-                                <h4 class="card-title">Dairy & Frozen</h4>
-                                <div class="list-wrapper">
-        
-                                    <form action="/createFrozen" method="POST">
-                                        <div class="add-items d-flex">
-                                            <input type="text" class="form-control todo-list-input" placeholder="Dairy:" name="groceryFrozenList">
-                                            <input type="number" class="form-control todo-list-input" placeholder="Quantity" name="quantity">
-                                            <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
-                                        </div>
-                                    </form>
-                                 <div class="categories container-fluid d-flex justify-content-around ">
-                                    <h5>Items</h5>
-                                    <h5>Quantity</h5>
-                                </div>
-        
-                                    <ul class="d-flex flex-column todo-list">
-                                        <% for(let i = 0; i < groceryFrozenItem.length; i++) { %>
-                                            <li class='groceryFrozenList'>
-                                                <div class="form-check"><label class="form-check-label"><input   class="checkbox" type="checkbox">
-                                                    <i class="input-helper"></i></label>
-                                               </div>
-                                            <% if (groceryFrozenItem[i].completed === true) {%>
-                                                <span class="completed "><%= groceryFrozenItem[i].list %></span>
-                                                <span class="quantityItems"><%= groceryFrozenItem[i].quantity %></span>
-                                                <% }else{ %>
-                                                <span><%= groceryFrozenItem[i].list %></span>
-                                                <span class="quantityItems"><%= groceryFrozenItem[i].quantity %></span>
-                                                <% } %>
-                                            <i class="deleteFrozen remove mdi mdi-close-circle-outline"></i>
-                                            </li>
-                                         <% } %>
-                                    </ul>
-                                    <h6>Remaining Items in this section: <span class="number"><%= frozenRemain %></span></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-        </div>
+                </div>
+    </div>
     </div>
 
 
 
 
 
-
-
-
-
     <div class="container-fluid">
         <div class="padding row d-flex justify-content-center">
-                    <div class="col-md-4">
-                        <div class="card px-2">
-                            <div class="card-body">
-                                <h4 class="card-title">Wine, Beer & Snacks</h4>
-                                <div class="list-wrapper">
-        
-                                    <form action="/createSnacks" method="POST">
-                                        <div class="add-items d-flex">
-                                            <input type="text" class="form-control todo-list-input" placeholder="Snacks:" name="grocerySnackList" required>
-                                            <input type="number" class="form-control todo-list-input" placeholder="Quantity:" name="quantity" required>
-                                            <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
-                                        </div>
-                                    </form>
-                                 <div class="categories container-fluid d-flex justify-content-around ">
-                                    <h5>Items</h5>
-                                    <h5>Quantity</h5>
+                <div class="col-md-4">
+                    <div class="card px-2">
+                        <div class="card-body">
+                            <h4 class="card-title">Wine, Beer & Snacks</h4>
+                            <div class="list-wrapper">
+    
+                                <form action="/createSnacks" method="POST">
+                                    <div class="add-items d-flex">
+                                        <input type="text" class="form-control" placeholder="Produce:" name="grocerySnackList" required>
+                                        <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
+                                        <select class="form-control" aria-label=".form-select-lg example" name="size">
+                                            <option selected>Size</option>
+                                            <option value="Bag">Bag</option>
+                                            <option value="Bottle">Bottle</option>
+                                            <option value="Box">Box</option>
+                                            <option value="Can">Can</option>
+                                            <option value="Carton">Carton</option>
+                                            <option value="Each">Each</option>
+                                            <option value="Jar">Jar</option>
+                                            <option value="Pack">Pack</option>
+                                        </select>
+                                        <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
+                                    </div>
+                                </form>
+    
+                                <div class="items container-fluid d-flex justify-content-start">
+                                    <div class="items container-fluid d-flex justify-content-start">
+                                    <h5>Items:</h5>
                                 </div>
-        
-                                    <ul class="d-flex flex-column todo-list">
-                                        <% for(let i = 0; i < grocerySnackItem.length; i++) { %>
-                                            <li class='grocerySnackList'>
-                                                <div class="form-check"><label class="form-check-label"><input   class="checkbox" type="checkbox">
-                                                    <i class="input-helper"></i></label>
-                                               </div>
-                                            <% if (grocerySnackItem[i].completed === true) {%>
-                                                <span class="completed "><%= grocerySnackItem[i].list %></span>
-                                                <span class="quantityItems"><%= grocerySnackItem[i].quantity %></span>
-                                                <% }else{ %>
-                                                <span><%= grocerySnackItem[i].list %></span>
-                                                <span class="quantityItems"><%= grocerySnackItem[i].quantity %></span>
-                                                <% } %>
-                                            <i class="deleteSnacks remove mdi mdi-close-circle-outline"></i>
-                                            </li>
-                                         <% } %>
-                                    </ul>
-                                    <h6>Remaining Items in this section: <span class="number"><%= snacksRemain %></span></h6>
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <h5>Quantity:</h5>
                                 </div>
+                                </div>
+    
+                                <ul class="d-flex flex-column todo-list">
+                                    <% for(let i = 0; i < grocerySnackItem.length; i++) { %>
+                                        <li class='grocerySnackList'>
+                                        <% if (grocerySnackItem[i].completed === true) {%>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                <input class="checkbox" type="checkbox" checked>
+                                                <i class="input-helper input-completed" data-id="<%= grocerySnackItem[i]._id %>"></i></label></div>
+                                            <div class="container  d-flex justify-content-start"><span class="completed "><%= grocerySnackItem[i].list %></span></div>
+                                            <div class="container d-flex justify-content-center"><span class="quantityItems"><%= grocerySnackItem[i].quantity %></span><span class="quantityItems"><%= grocerySnackItem[i].size %></span></div>
+                                            <% }else{ %>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                <input class="checkbox" type="checkbox">
+                                                <i class="input-helper input-incompleted" data-id="<%= grocerySnackItem[i]._id %>"></i></label></div>
+                                            <div class="container  d-flex justify-content-start"><span><%= grocerySnackItem[i].list %></span></div>
+                                            <div class="container d-flex justify-content-center"><span class="quantityItems"><%= grocerySnackItem[i].quantity %></span><span class="quantityItems"><%= grocerySnackItem[i].size %></span></div>
+                                            <% } %>
+                                        <i class="deleteSnacks remove mdi mdi-close-circle-outline" data-id="<%= grocerySnackItem[i]._id %>" ></i>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                                <h6>Remaining Items in this section: <span class="number"><%= snacksRemain %></span></h6>
                             </div>
                         </div>
                     </div>
-       
-        
-       
+                </div>
+     
+    
+    
+    
+           
                     <div class="col-md-4">
                         <div class="card px-2">
                             <div class="card-body">
@@ -292,41 +362,60 @@
         
                                     <form action="/createPersonal" method="POST">
                                         <div class="add-items d-flex">
-                                            <input type="text" class="form-control todo-list-input" placeholder="Supplies:" name="groceryPersonalList">
-                                            <input type="number" class="form-control todo-list-input" placeholder="Quantity" name="quantity">
+                                            <input type="text" class="form-control" placeholder="Supplies:" name="groceryPersonalList" required>
+                                            <input type="number" class="form-control" placeholder="Quantity:" name="quantity" required>
+                                            <select class="form-control" aria-label=".form-select-lg example" name="size">
+                                                <option selected>Size</option>
+                                                <option value="Bag">Bag</option>
+                                                <option value="Box">Box</option>
+                                                <option value="Can">Can</option>
+                                                <option value="Carton">Carton</option>
+                                                <option value="Each">Each</option>
+                                                <option value="Jar">Jar</option>
+                                                <option value="Pack">Pack</option>
+                                            </select>
                                             <button class="add btn btn-light font-weight-bold todo-list-add-btn">Add</button>
                                         </div>
                                     </form>
-                                 <div class="categories container-fluid d-flex justify-content-around ">
-                                    <h5>Items</h5>
-                                    <h5>Quantity</h5>
-                                </div>
+        
+                                    <div class="items container-fluid d-flex justify-content-start">
+                                        <div class="items container-fluid d-flex justify-content-start">
+                                        <h5>Items:</h5>
+                                    </div>
+                                    <div class="container-fluid d-flex justify-content-center">
+                                        <h5>Quantity:</h5>
+                                    </div>
+                                    </div>
         
                                     <ul class="d-flex flex-column todo-list">
                                         <% for(let i = 0; i < groceryPersonalItem.length; i++) { %>
                                             <li class='groceryPersonalList'>
-                                                <div class="form-check"><label class="form-check-label"><input   class="checkbox" type="checkbox">
-                                                    <i class="input-helper"></i></label>
-                                               </div>
                                             <% if (groceryPersonalItem[i].completed === true) {%>
-                                                <span class="completed "><%= groceryPersonalItem[i].list %></span>
-                                                <span class="quantityItems"><%= groceryPersonalItem[i].quantity %></span>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                    <input class="checkbox" type="checkbox" checked>
+                                                    <i class="input-helper input-completed" data-id="<%= groceryPersonalItem[i]._id %>"></i></label></div>
+                                                <div class="container  d-flex justify-content-start"><span class="completed "><%= groceryPersonalItem[i].list %></span></div>
+                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryPersonalItem[i].quantity %></span><span class="quantityItems"><%= groceryPersonalItem[i].size %></span></div>
                                                 <% }else{ %>
-                                                <span><%= groceryPersonalItem[i].list %></span>
-                                                <span class="quantityItems"><%= groceryPersonalItem[i].quantity %></span>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                    <input class="checkbox" type="checkbox">
+                                                    <i class="input-helper input-incompleted" data-id="<%= groceryPersonalItem[i]._id %>"></i></label></div>
+                                                <div class="container  d-flex justify-content-start"><span><%= groceryPersonalItem[i].list %></span></div>
+                                                <div class="container d-flex justify-content-center"><span class="quantityItems"><%= groceryPersonalItem[i].quantity %></span><span class="quantityItems"><%= groceryPersonalItem[i].size %></span></div>
                                                 <% } %>
-                                            <i class="deletePersonal remove mdi mdi-close-circle-outline"></i>
+                                            <i class="deletePersonal remove mdi mdi-close-circle-outline" data-id="<%= groceryPersonalItem[i]._id %>" ></i>
                                             </li>
-                                         <% } %>
+                                            <% } %>
                                     </ul>
                                     <h6>Remaining Items in this section: <span class="number"><%= personalRemain %></span></h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
         </div>
-    </div>
+        </div>
 
 
 
