@@ -128,11 +128,9 @@ h4{
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
 }
 
-/* .quantityItems{
-    position: relative;
-    text-align: center;
-    left: 150px;
-} */
+.quantityItems{
+    padding-left: .3rem;
+}
 
 
 /* .list-wrapper ul li:last-child {
