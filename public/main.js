@@ -37,19 +37,27 @@ Array.from(deleteMeatsItem).forEach((element) => {
 })
 
 Array.from(deleteGrainsItem).forEach((element) => {
-    element.addEventListener('click',deleteGrains)
+    element.addEventListener('click', () =>{
+        deleteItem(element.dataset.id, 'grains')
+    })
 })
 
 Array.from(deleteFrozenItem).forEach((element) => {
-    element.addEventListener('click',deleteFrozen)
+    element.addEventListener('click', () => {
+        deleteItem(element.dataset.id, 'frozen')
+    })
 })
 
 Array.from(deleteSnacksItem).forEach((element) => {
-    element.addEventListener('click',deleteSnacks)
+    element.addEventListener('click', () => {
+        deleteItem(element.dataset.id, 'snacks')
+    })
 })
 
 Array.from(deletePersonalItem).forEach((element) => {
-    element.addEventListener('click',deletePersonal)
+    element.addEventListener('click', () => {
+        deleteItem(element.dataset.id, 'personal')
+    })
 })
 
 
@@ -115,10 +123,7 @@ Array.from(undoPersonalComplete).forEach((element) => {
 
 
 
-// Functions for all the deletes 
 async function deleteItem(listText,subFolder){
-    // const listText = this.dataset.id
-    // console.log(veggieId)
     try{
         const response = await fetch('deleteItem', {
             method: 'delete',
@@ -135,111 +140,7 @@ async function deleteItem(listText,subFolder){
         console.log(err)
 
     }
-  
 }
-
-async function deleteMeats(listText, route){
-    // const listText = this.dataset.id
-    try{
-        const response = await fetch(route, {
-            method: 'delete',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'basketItem':listText
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()   
-    }catch(err){
-        console.log(err)
-
-    }
-
-}
-
-async function deleteGrains(){
-    const listText = this.parentNode.childNodes[3].innerText
-    try{
-        const response = await fetch('deleteGrains', {
-            method: 'delete',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'basketItem':listText
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()   
-    }catch(err){
-        console.log(err)
-
-    }
-  
-}
-
-async function deleteFrozen(){
-    const listText = this.parentNode.childNodes[3].innerText
-    try{
-        const response = await fetch('deleteFrozen', {
-            method: 'delete',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'basketItem':listText
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()   
-    }catch(err){
-        console.log(err)
-
-    }
-
-}
-
-async function deleteSnacks(){
-    const listText = this.parentNode.childNodes[3].innerText
-    try{
-        const response = await fetch('deleteSnacks', {
-            method: 'delete',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'basketItem':listText
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()   
-    }catch(err){
-        console.log(err)
-
-    }
-  
-}
-
-async function deletePersonal(){
-    const listText = this.parentNode.childNodes[3].innerText
-    try{
-        const response = await fetch('deletePersonal', {
-            method: 'delete',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'basketItem':listText
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()   
-    }catch(err){
-        console.log(err)
-
-    }
-
-}
-
-
-
 
 
 
