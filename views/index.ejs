@@ -100,7 +100,7 @@
                         <form action="/createMeat" method="POST">
                             <div class="add-items d-flex">
                                 <input type="text" class="form-control" placeholder="Meat:" name="groceryMeatList" required>
-                                <input type="number" class="form-control" placeholder="Weight:" name="quantity" required>
+                                <input type="number" class="form-control" placeholder="Weight:" name="quantity" required step="any">
                                 <select class="form-control" aria-label=".form-select-lg example" name="size" required>
                                     <option selected>Size:</option>
                                     <option value="lbs">lbs</option>
@@ -157,7 +157,7 @@
             <div class="col-md-4">
                 <div class="card px-2">
                     <div class="card-body">
-                        <h4 class="card-title">Bakery & Perpared Foods</h4>
+                        <h4 class="card-title">Bakery & Prepared Foods</h4>
                         <div class="list-wrapper">
 
                             <form action="/createGrains" method="POST">
@@ -425,3 +425,4 @@
     
 </body>
 </html>
+
