@@ -191,7 +191,9 @@ h5{
         font-size: 4.8rem;
         top: 80px;
     }
-   
+    body{
+        background-position: center
+    }
   
 }
 
@@ -200,7 +202,9 @@ h5{
         font-size: 4rem;
         top: 65px;
     }
-   
+    body{
+        background-position: center
+    }
 }
 
 
@@ -210,7 +214,9 @@ h5{
         top: 55px
     }
    
-
+    body{
+        background-position: center
+    }
   
 }
 
@@ -220,6 +226,9 @@ h5{
         font-size: 3rem;
         top: 45px;
     }
+    body{
+        background-position: center
+    }
 }
 
 
@@ -228,6 +237,9 @@ h5{
         font-size: 2.5rem;
         top: 35px;
     }
+    body{
+        background-position: center
+    }
 }
 
 @media (max-width:415px) {
@@ -235,13 +247,18 @@ h5{
         font-size: 2rem;
         top: 30px;
     }
-    
+    body{
+        background-position: center
+    }
 }
 
 @media (max-width:280px) {
     h2{
         font-size: 1.5rem;
         top: 20px;
+    }
+    body{
+        background-position: center
     }
    
 }
@@ -252,6 +269,9 @@ h5{
 @media (min-width: 768px) and (max-width: 991px) { 
     .col-md-4{
         width: 50%;
+    }
+    body{
+        background-position: center
     }
  }
 
@@ -406,6 +426,9 @@ h5{
 
 
 
-.list-wrapper ul li{
-    display: flex 
+.list-wrapper ul li{ 
+    display: flex; 
+    overflow: hide;
+    
 } 
+
