@@ -192,7 +192,7 @@ h5{
         top: 80px;
     }
     body{
-        background-position: left
+        background-position: right;
     }
   
 }
@@ -203,7 +203,7 @@ h5{
         top: 65px;
     }
     body{
-        background-position: left
+        background-position: right;
     }
 }
 
@@ -215,7 +215,7 @@ h5{
     }
    
     body{
-        background-position: left
+        background-position: right;
     }
   
 }
@@ -227,7 +227,7 @@ h5{
         top: 45px;
     }
     body{
-        background-position: left
+        background-position: right;
     }
 }
 
@@ -238,7 +238,7 @@ h5{
         top: 35px;
     }
     body{
-        background-position: left
+        background-position: right;
     }
 }
 
@@ -248,7 +248,7 @@ h5{
         top: 30px;
     }
     body{
-        background-position: left
+        background-position: right;
     }
 }
 
@@ -258,7 +258,7 @@ h5{
         top: 20px;
     }
     body{
-        background-position: left
+        background-position: right;
     }
    
 }
@@ -270,8 +270,8 @@ h5{
     .col-md-4{
         width: 50%;
     }
-    body{
-        background-position: left
+     body{
+        background-position: right;
     }
  }
 
